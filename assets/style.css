@@ -1,0 +1,426 @@
+@charset "utf-8";
+/* CSS Document */
+header, section, footer, aside, nav, article, figure, figcaption {
+	display: block;}
+body {
+	color: #666666;
+	/*background-color: #f9f8f6;*/
+	/*background-image: url("../../PETSHOPKU_2/images/dark-wood.jpg");*/
+	background-position: center;
+	font-family: Verdana, Verdana, serif;
+	font-size: 14px;
+	line-height: 1.3em;
+	margin: 0px;}
+.wrapper {
+	width: 940px;
+	margin: 20px auto 20px auto;
+	border: 0px solid #000000;
+	background-color: #ffffff;}
+header {
+	height: 200px;
+	background-image: url("../../PETSHOP_2/images/header.png");
+	}
+h1 {
+	text-indent: -9999px;
+	width: 940px;
+	height: 130px;
+	margin: 0px;}
+nav, footer {
+	clear: both;
+	color: #ffffff;
+	background-color: #aeaca8;
+	height: 30px;}
+nav ul {
+	/*margin: 0px;*/
+	padding: 5px 0px 5px 30px;
+	}
+nav li {
+	display: inline;
+	margin-right: 40px;}
+nav li a {
+	color: #ffffff;}
+nav li a:hover, nav li a.current {
+	color: #000000;}
+section.courses {
+	float: left;
+	/*width: 0px;*/		
+	border-right: 0px solid #eeeeee;}
+article {
+	clear: both;
+	overflow: auto;
+	width: 100%;}
+hgroup {
+	margin-top: 40px;}
+figure {
+	float: left;
+	width: 290px;
+	height: 220px;
+	padding: 5px;
+	margin: 20px;
+	border: 1px solid #eeeeee;}
+figcaption {
+	font-size: 90%;
+	text-align: left;}
+aside {
+	width: 145px;
+	float: left;
+	padding: 10px 15px 0px 20px;
+	height: 300px;
+	border: 1px solid #D0D0D0;}
+aside section a {
+	display: block;
+	padding: 0px;
+	border-bottom: 1px solid #eeeeee;}
+aside section a:hover {
+	color: #985d6a;
+	background-color: #efefef;}
+a {
+	color: #353535;
+	text-decoration: none;}
+h1, h2, h3 {
+	font-weight: normal;}
+h2 {
+	margin: 10px 0px 5px 0px;
+	padding: 0px;}
+h3 {
+	margin: 0px 0px 10px 0px;
+	color: #484445;}
+aside h2 {
+	padding: 30px 0px 10px 0px;
+	color: #de6581;
+}
+
+.group {
+zoom: 1;
+}
+.col_1_of_4 {
+display: block;
+float: left;
+margin:0% 0 9% 3.6%;
+}
+.col_1_of_4:first-child {
+margin-left: 0;
+}
+.span_1_of_4{
+width:22.3%;
+}
+.wrap {
+width: 90%;
+}
+.clear{
+clear:both !important;
+}/* clear float */
+.social-icons {
+padding-top: 8%;
+}
+footer {
+font-size: 80%;
+padding: 6px 0px 160px 80px;
+}
+body,td,th {
+font-style: normal;
+font-weight: normal;
+}
+.cari {float: right;border: 1px solid #3C3C3C;background: #FFF;border-radius: 0.3em;-webkit-border-radius: 0.3em;-moz-border-radius: 0.3em;-o-border-radius: 0.3em;position: relative;margin-top: 2px;margin-right: 15px;width:25%;}
+.cari form input[type="text"] {
+border: none;
+outline: none;
+background: none;
+font-size:11px;
+color: #acacac;
+width:75%;
+padding:5px;
+}
+.cari form input[type="submit"] {
+border: none;
+cursor: pointer;
+background: url(../PETSHOPKU/images/cari.png) no-repeat 0px 7px;
+position: absolute;
+right: 0;
+width: 20px;
+height: 25px;
+}
+.title_box{
+width:196px;
+height:30px;
+margin:0px 0 0 0;
+background:url(../images/menu_title_bg.gif) no-repeat center;
+text-align:center;
+font-size:13px;
+font-weight:bold;
+color:#fff;
+line-height:30px;
+}
+.border{
+	width: 200px;
+	float: right;
+	padding: 20px 0px 0px 20px;
+	height: 120px;
+	border: 1px solid #D0D0D0;
+}
+.shopcartimg {
+	float: right;
+	margin-top: 4em;
+}
+/** SLIDER **/
+
+img {
+	max-width: 175%;
+	max-height: 80%;
+	height: aotu;
+}
+ul,ol{
+	list-style: none;
+}
+/** END SLIDER **/
+.container { /*posisi letak slider*/
+margin:105 auto;
+position:relative;
+overflow:hidden;
+border: 1px solid #D0D0D0;
+}
+.container, ul.slider li img{
+	width:756px; 
+	height:310px;
+	float:right;
+} ul.slider {
+	position:absolute;
+	display:block;
+	width:300%;
+}
+.caption { /* styling untuk deskripsi setiap slide */
+position:absolute;
+background-color:rgba(0,0,0,0.3);
+bottom:0;
+padding:10px;
+color:#fff;
+left:0;
+right:0;
+}
+/* yg membuat jadi slider */
+ul.slide li {
+	display:inline-block;
+	float:left;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-transition:-webkit-transform 2000ms;
+	-moz-transition:-webkit-transform 2000ms;
+	transition:-webkit-transform 2000ms, transform 2000ms;
+}
+ul.slide li.slide-1{
+	left:0%
+}
+ul.slide li.slide-2{
+	left:100%
+}
+ul.slide li.slide-3{
+	left:200%
+}
+#nav-1:checked ~ ul.slide li{
+	-webkit-transform:translateX(0%);
+	-moz-transform:translateX(0%);
+	transform:translateX(0%);
+}
+#nav-2:checked ~ ul.slide li{
+	-webkit-transform:translateX(100%);
+	-moz-transform:translateX(100%);
+	transform:translateX(100%);
+}
+#nav-3:checked ~ ul.slide li{
+	-webkit-transform:translateX(200%);
+	-moz-transform:translateX(200%);
+	transform:translateX(200%);
+}
+/*end, yg membuat jadi slider*/
+/*navigator*/
+.radio-nav { /*menghilangkan radio button*/
+display:none;
+} /*styling untuk tombol next dan previous slide*/
+.nav-arrow{
+	position:absolute;
+	top:45%;
+	width:50px;
+	height:50px;
+}
+.nav-next{
+	right:10px;
+}
+.nav-prev{
+	left:10px;
+}
+.nav-arrow label{
+	-webkit-transition:all 0.3s;
+	-moz-transition:all 0.3s;
+	background-color:rgba(0,0,0,0.3);
+	color:#fff;
+	border-radius:50%;
+	display:block;
+	position:absolute;
+	padding:15px 20px;
+	cursor:pointer;
+	z-index:1;
+	opacity:0;
+	font-weight:bold;
+	line-height:1;
+}
+.container:hover .nav-arror label{
+	background-color:rgba(0,0,0,0.7);
+}
+/*end stylling untuk tombol next dan previous */
+#nav-1:checked~ .nav-prev label.nav-3,
+#nav-1:checked~ .nav-next label.nav-2,
+#nav-2:checked~ .nav-prev label.nav-1,
+#nav-2:checked~ .nav-next label.nav-3,
+#nav-3:checked~ .nav-prev label.nav-2,
+#nav-3:checked~ .nav-next label.nav-1{
+	z-index:2;
+	opacity:1;
+}
+/* login */
+.input_field{
+width:173px;
+}
+
+.slider {
+    padding-bottom: 30em;
+    display:block;
+}
+.slider img {
+  position: absolute;
+  overflow: hidden;
+  z-index: 9;
+  width: 800px;
+  height : 400px;
+}
+.rslides {
+    z-index: 111;
+    position: absolute;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 500px;
+    text-align: left;
+  }
+ .rslides h3{
+    background: rgba(249,156,27,0.3);
+ 	  color: rgba(255,255,255,1);
+    font-size: 2.5em;
+    font-weight: 100;
+    margin-top: 2em;
+    text-align: left;
+    margin-top: 10.8em;
+ }
+.rslides p{
+    background: rgba(84,26,67,0.3);
+    color: rgba(249,156,27,1);
+    font-size: 1em;
+    width: 46%;
+    line-height: 1.8em;
+    text-align: left;
+    padding: 0.5em 0 2em;
+    font-weight: 100;
+}
+.rslides a{
+    background: #2793FD;
+    padding: 15px 17px 15px 20px;
+    color: #fff;
+    margin-top: 11px;
+        transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+.rslides a:hover{
+		color:#fff;
+	 background-color: #E1009F;
+}
+i.glyphicon.glyphicon-menu-right {
+    padding-left: 15px;
+    vertical-align: middle;
+}
+i.glyphicon.glyphicon-menu-right {
+    background-color: #2793FD;
+    padding: 17px 12px 16px 15px;
+    margin: 7px 13px 6px 1px;
+    vertical-align: baseline;
+    color: #fff;
+    cursor:pointer;
+        transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+.callbacks_tabs a:after {
+    content: "\f111";
+    font-size: 0;
+    font-family: FontAwesome;
+    visibility: visible;
+    display: block;
+    height: 6px;
+    width: 36px;
+    display: inline-block;
+    border: 2px solid #000;
+    border-radius: 0;
+    background: #000;
+}
+.callbacks_here a:after{
+    border: 2px solid #000;
+    background: transparent;
+}
+.callbacks_tabs a{
+	visibility:hidden;
+}
+.callbacks_tabs li{
+	display:inline-block;
+}
+ul.callbacks_tabs.callbacks1_tabs {
+    position: absolute;
+    bottom: 0%;
+    z-index: 999;
+    right: 40%;
+}
+.callbacks_nav {
+    position: absolute;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    top: 54%;
+    left: -14%;
+    z-index: 3;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none;
+    height: 40px;
+    width: 38px;
+    margin-top: 0;
+  }
+.callbacks_nav.next {
+  left: auto;
+  background-position: right top;
+    right: 4%;
+    top: 54%;
+ }
+/*--/index-banner-slider--*/
+
+.borderkeranjang {
+	width: 100px;
+	padding: 20px 0px 0px 20px;
+	height: 120px;
+	border: 1px solid #D0D0D0;
+}
