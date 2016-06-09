@@ -1,7 +1,7 @@
 <section id="main" class="grid_9 push_3">
 <article id="dashboard">
 	<p>
-		Hai <b>Mohamad Sholihin</b>, Selamat datang di halaman Administrator.<br>
+		Hai <b><?php echo $_SESSION['login_admin']['name_admin']; ?></b>, Selamat datang di halaman Administrator.<br>
     Silahkan klik menu pilihan yang berada di sebelah kiri untuk mengelola website.
 	</p>
 <section class="icons">

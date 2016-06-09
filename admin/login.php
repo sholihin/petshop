@@ -13,7 +13,7 @@
 	<div class="container_12 clearfix">
 		<div id="logo" class="grid_5">
 			<!-- replace with your website title or logo -->
-			<a id="site-title" href="#"><span>Form Login</span></a>
+			<a id="site-title" href="#"><strong>Login Admin</strong></a>
 		</div>
 	</div>
 </header>

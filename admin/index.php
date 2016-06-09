@@ -38,7 +38,7 @@
             include "produk.php";
         break;
         case "kategori":
-            include "kategori.php";
+            include "category.php";
         break;
         case "member":
             include "member.php";
