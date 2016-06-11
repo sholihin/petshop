@@ -1,8 +1,6 @@
 <section id="main" class="grid_9 push_3">
   <article id="dashboard">
     <h2>Daftar Member</h2><hr>
-    <input type="button" class="button blue" value="Tambah Member" onclick="window.location.href='?module=kelas&amp;act=tambahkelas';">
-    <br><br>
     <table id="table1" class="gtable sortable">
       <thead>
         <tr>
@@ -38,8 +36,11 @@
           <td><?php echo $data['phone']; ?></td>
           <td><?php echo $data['status']; ?></td>
           <td>
-             <a href="?module=kelas&amp;act=editkelas&amp;id=6" title="Edit"><img src="images/icons/edit.png" alt="Edit"></a> |
-             <a href="javascript:confirmdelete('modul/mod_kelas/aksi_kelas.php?module=kelas&amp;act=hapuskelas&amp;id=6')" title="Hapus"><img src="images/icons/cross.png" alt="Delete"></a>
+             <a href="?module=editmember&id=<?php echo $data['id']; ?>" title="Edit">
+                <img src="images/icons/edit.png" alt="Edit"></a> |
+             <a href="deletemember.php?id=<?php echo $data['id']; ?>" title="Hapus">
+                <img src="images/icons/cross.png" alt="Delete">
+             </a>
           </td>
         </tr>
         <?php } ?>

@@ -3,8 +3,8 @@
 <title></title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
-<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+<!-- <script type="text/javascript" src="js/custom.js"></script> -->
 
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
 </head>
@@ -49,8 +49,17 @@
         case "konfirmasi":
             include "konfirmasi.php";
         break;
+        case "gantipassword":
+            include "gantipassword.php";
+        break;
         case "laporan":
             include "laporan.php";
+        break;
+        case "editmember":
+            include "editmember.php";
+        break;
+        case "editcategory":
+            include "editcategory.php";
         break;
           default:
             include "dashboard.php";
@@ -63,7 +72,7 @@
 			<section>
 				<ul>
 					<li class="garisbawah"><a href="index.php">Home</a></li>
-					<li class="garisbawah"><a href="?module=gpassword">Ganti Password</a></li>
+					<li class="garisbawah"><a href="?module=gantipassword">Ganti Password</a></li>
 					<li class="garisbawah"><a href="?module=produk">Produk</a></li>
 					<li class="garisbawah"><a href="?module=kategori">Kategori</a></li>
 					<li class="garisbawah"><a href="?module=member">Member</a></li>
