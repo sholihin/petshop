@@ -110,7 +110,6 @@
           <td><?php 
           $q = mysqli_query($koneksi, "SELECT * FROM `category` WHERE id_category='".$data['id_category']."'");
           $d = mysqli_fetch_array($q);
-          echo $d['name_category']; 
           ?></td>
           <td><?php echo $data['status']; ?></td>
           <td>

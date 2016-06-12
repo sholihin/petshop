@@ -10,54 +10,24 @@ session_start();
 <head>
 <title>PetshopKu : Belanja Kebutuhan Hewan Peliharaan Anda!</title>
 <link rel="stylesheet" href="assets/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" type="text/css" media="all"/>
 <script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="assets/js/boxOver.js"></script>
 <script type="text/javascript" src="assets/js/responsiveslides.min.js"></script>
-<style type="text/css">
-	.col3 {
-	    width: 250px;
-	    height:290px;
-	    padding: 0px 50px;
-	    float: left;
-	}
-</style>
 <meta charset="utf-8">
 </head>
 	<body>
-			<table style="width:900px;margin:0 auto;border:1px solid #eee;">
+			<table style="width:1000px;margin:0 auto;">
 				<tr>
 					<td colspan="2">
 						 <header>
-					          <!-- login -->
-					    	<div class="border">      
-					          <!--<div class="title_box">Members</div>-->
-					        <?php
-							 if (empty($_SESSION['login_member'])){
-							  echo "<form  name='loginuser' action='check_login.php' method='post'>
-							        <label>Username</label>
-							        <input type='text' value='' name='email' size='27' class='input_field' required />
-							        <label>Password</label>
-							        <input type='password' value='' name='password' size='27' class='input_field' required />
-							        <input type='submit' name='buttonlogin' class='btn-primary' value='Login' alt='Login' id='submit_btn' />
-							        <button class='btn-warning' href='#'>Register</button>
-							        </form>";
-							} else {
-							  $namanya = ($_SESSION['login_member']['fullname']);
-							  echo "<h3 style='background-color:;'>Selamat datang : $namanya</h3><br>
-							  		<a href='logout.php'><strong>LogOut</strong></a>";
-							}
-							?>
-					        <?php
-					  		if (!empty($_SESSION[login_user])) {
-					  		echo "<a href='logout.php'><input type='button' name='logout' value='Log Out'></a>";
-					  		}
-					  		?>
-					        </div>
-					    	<!--end login -->
-
 					    	<div class="shopcartimg">    
-							<a href="index.php?page=cart">
-							<img src="images/keranjang.png" alt="" title=""> <strong class="center-item">
+					    	<?php if(isset($_SESSION['login_member'])) { ?>
+					    	Selamat datang <strong><i class="fa fa-user"></i> <?php echo $_SESSION['login_member']['fullname']; ?></strong> | <a href="logout.php"><strong><i class="fa fa-sign-out"></i> Logout</strong></a><br>
+					    	<?php } ?>
+							<a href="index.php?page=cart" style="margin-right:15px;color:#eab265">
+							<strong class="center-item">
+							<i class="fa fa-shopping-cart fa-3x"></i><br>
 							<?php 
 								$j = 0;
 								for($i=0; $i < count($_SESSION['cart']); $i++){
@@ -92,14 +62,14 @@ session_start();
 							     <!--end cari-->
 							      
 								<ul>
-								   	<li><a href="index.php" class="current">
-								   		<img src="images/home.png"> Home</a></li>
+								   	<li><a href="index.php">
+								   		<i class="fa fa-home"></i> Home</a></li>
 									<li><a href="index.php?page=tentang">
-										<img src="images/user_add.png"> Tentang Kami</a></li>
+										<i class="fa fa-user"></i> Tentang Kami</a></li>
 									<li><a href="index.php?page=bantuan">
-										<img src="images/compare.png"> Cara Pembayaran</a></li>
+										<i class="fa fa-shopping-bag"></i> Cara Pembayaran</a></li>
 							        <li><a href="index.php?page=kontak">
-							        	<img src="images/contact-new.png"> kontak</a></li>
+							        	<i class="fa fa-phone"></i> Kontak</a></li>
 								</ul>
 							</nav>
 					         <!--end navbar -->
@@ -141,7 +111,20 @@ session_start();
 					</td>
 				</tr>
 				<tr>
-					<td style="vertical-align:top;border-right:1px solid #D0D0D0;">
+					<td style="vertical-align:top;">
+						<?php
+						 if (empty($_SESSION['login_member'])){ ?>
+						  	<div class='border'>
+						  		<form  name='loginuser' action='check_login.php' method='post'>
+							        <label>Username</label>
+							        <input type='text' value='' name='email' class='input_field' required />
+							        <label>Password</label>
+							        <input type='password' value='' name='password' class='input_field' required />
+							        <input type='submit' name='buttonlogin' class='btn-primary' value='Login' alt='Login' id='submit_btn' />
+							        <button class='btn-warning' href='#'>Register</button>
+						        </form>
+					        </div>
+						<?php }	?>
 						<aside>
 							<section class="popular-recipes">
 								<?php 
@@ -160,7 +143,7 @@ session_start();
 							</section>
 						</aside>
 					</td>
-					<td style="vertical-align: top;padding:15px;margin:0 auto;text-align:center;">
+					<td style="vertical-align: top;padding:15px;margin:0 auto;text-align:center;width:800px">
 						<?php
 							switch ($_GET['page']) {
 							    case "produk":

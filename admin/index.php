@@ -58,8 +58,17 @@
         case "editmember":
             include "editmember.php";
         break;
+        case "editproduk":
+            include "editproduk.php";
+        break;
         case "editcategory":
             include "editcategory.php";
+        break;
+        case "detailtransaksi":
+            include "detailtransaksi.php";
+        break;
+        case "reveiw":
+            include "review.php";
         break;
           default:
             include "dashboard.php";
@@ -77,7 +86,8 @@
 					<li class="garisbawah"><a href="?module=kategori">Kategori</a></li>
 					<li class="garisbawah"><a href="?module=member">Member</a></li>
 					<li class="garisbawah"><a href="?module=pemesanan">Pemesanan Barang</a></li>
-					<li class="garisbawah"><a href="?module=konfirmasi">Konfirmasi</a></li>
+                    <li class="garisbawah"><a href="?module=konfirmasi">Konfirmasi</a></li>
+					<li class="garisbawah"><a href="?module=review">Review Produk</a></li>
 					<li class="garisbawah"><a href="?module=laporan">Laporan</a></li>
 				</ul>
 			</section>
