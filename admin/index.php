@@ -4,9 +4,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
-<!-- <script type="text/javascript" src="js/custom.js"></script> -->
-
-<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+<!-- <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"> -->
 </head>
 <body>
 <?php include "cek_session.php"; ?>

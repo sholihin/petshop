@@ -17,7 +17,7 @@ if (isset($_POST['buttonlogin'])) {
 			$_SESSION['login_member']=$datas;
 			header("location: index.php"); 
 		} else {
-			echo "<script>alert('Email atau password Anda salah..!!');window.location.href='index.php?page=masuk';</script>";
+			echo "<script>alert('Email atau password Anda salah..!!');window.location.href='index.php';</script>";
 		}
 
 		mysqli_close($connection);

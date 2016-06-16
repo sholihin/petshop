@@ -22,6 +22,8 @@ if(isset($_SESSION['login_member'])){
 		'".$date."', 
 		'checkout'
 	  	)");
+
+	  	mysqli_query($koneksi, "UPDATE `product` SET `stock_product` = `stock_product` - ".$_SESSION['cart'][$x]['qty']." WHERE `id_product` = '".$_SESSION['cart'][$x]['id_produk']."'");
 	}
 	$query = mysqli_query($koneksi, "SELECT max(id_invoice) from invoice");
 	$data = mysqli_fetch_array($query);
@@ -45,6 +47,7 @@ if(isset($_SESSION['login_member'])){
 	'".$_SESSION['login_member']['id']."', 
 	'".$date."')
 	");
+
 	unset($_SESSION['cart']);
 	header('location:index.php?page=konfirmasi&inv='.$hasilkode.'');
 }else{

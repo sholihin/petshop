@@ -1,9 +1,6 @@
 <?php
 include "config/koneksi.php";
-error_reporting(0);
 session_start();
-
- $namanya = ($_SESSION[namauserdepan]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,9 +8,11 @@ session_start();
 <title>PetshopKu : Belanja Kebutuhan Hewan Peliharaan Anda!</title>
 <link rel="stylesheet" href="assets/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="assets/jquery-flickity/flickity.css" type="text/css" media="all"/>
+<script type="text/javascript" src="assets/js/jquery-3.0.0.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="assets/js/boxOver.js"></script>
 <script type="text/javascript" src="assets/js/responsiveslides.min.js"></script>
+<script type="text/javascript" src="assets/jquery-flickity/flickity.pkgd.js"></script>
 <meta charset="utf-8">
 </head>
 	<body>
@@ -25,7 +24,7 @@ session_start();
 					    	<?php if(isset($_SESSION['login_member'])) { ?>
 					    	Selamat datang <strong><i class="fa fa-user"></i> <?php echo $_SESSION['login_member']['fullname']; ?></strong> | <a href="logout.php"><strong><i class="fa fa-sign-out"></i> Logout</strong></a><br>
 					    	<?php } ?>
-							<a href="index.php?page=cart" style="margin-right:15px;color:#eab265">
+							<a href="index.php?page=cart" style="margin-right:15px;color:#03A9F4">
 							<strong class="center-item">
 							<i class="fa fa-shopping-cart fa-3x"></i><br>
 							<?php 
@@ -44,7 +43,6 @@ session_start();
 							</strong>
 							</a>
 							<br/>
-							<?php require_once "item.php"; ?>
 							</div> 
 
 							<!-- Logo -->     
@@ -52,24 +50,24 @@ session_start();
 					        <!-- end logo -->
 					        
 					        <!--navbar-->        
-							<nav>
+							<nav style="border-radius: 4px;background-color: #03a9f4;height:40px">
 							     <!--cari-->
 							<div class="cari">
 							    <form>
-								    <input type="text" value="Cari" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Cari';}">
+								    <input type="text" value="Cari" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Cari';}" style="margin: 4px 4px;">
 							    </form>
 							</div>
 							     <!--end cari-->
 							      
 								<ul>
 								   	<li><a href="index.php">
-								   		<i class="fa fa-home"></i> Home</a></li>
+								   		<strong><i class="fa fa-home"></i> Home</strong></a></li>
 									<li><a href="index.php?page=tentang">
-										<i class="fa fa-user"></i> Tentang Kami</a></li>
+										<strong><i class="fa fa-user"></i> Tentang Kami</strong></a></li>
 									<li><a href="index.php?page=bantuan">
-										<i class="fa fa-shopping-bag"></i> Cara Pembayaran</a></li>
+										<strong><i class="fa fa-shopping-bag"></i> Cara Pembayaran</strong></a></li>
 							        <li><a href="index.php?page=kontak">
-							        	<i class="fa fa-phone"></i> Kontak</a></li>
+							        	<strong><i class="fa fa-phone"></i> Kontak</strong></a></li>
 								</ul>
 							</nav>
 					         <!--end navbar -->
@@ -79,29 +77,26 @@ session_start();
 				<tr>
 					<td colspan="2">
 						<section class="courses">
-					       	<div class="container">
+					       	<div class="container" style="border-radius: 4px;">
 							   <div class="slider">
 								   <div class="callbacks_container">
 									  <ul class="rslides" id="slider">
-										 <li>
-											<img src="images/FOTO BANNER/banner_1_copy.jpg" alt=""> 
+										 <li style="border-radius: 4px;">
+											<img src="images/banner/banner_1_copy.jpg" alt=""> 
 											<h3></h3>
 										 </li>
-										 <li>
-										 	<img src="images/FOTO BANNER/banner_2.jpg" alt=""> 
+										 <li style="border-radius: 4px;">
+										 	<img src="images/banner/banner_2.jpg" alt=""> 
 											<h3></h3>
 										 </li>
-						                 <li>
-						                 	<img src="images/FOTO BANNER/bannerslide_03.jpg" alt="">
+						                 <li style="border-radius: 4px;">
+						                 	<img src="images/banner/bannerslide_03.jpg" alt="">
 						                    <h3></h3>
 						                 </li>
-						                 <li>
-						                 	<img src="images/FOTO BANNER/bannerslide_02.jpg" alt="">
+						                 <li style="border-radius: 4px;">
+						                 	<img src="images/banner/bannerslide_02.jpg" alt="">
 						                    <h3></h3>
 						                 </li>
-										 <?php
-										 //}
-										 ?>
 									  </ul>
 								  </div>
 								</div>
@@ -114,18 +109,29 @@ session_start();
 					<td style="vertical-align:top;">
 						<?php
 						 if (empty($_SESSION['login_member'])){ ?>
-						  	<div class='border'>
+						  	<div class='border' style="margin-top:6px;height:182px">
 						  		<form  name='loginuser' action='check_login.php' method='post'>
 							        <label>Username</label>
 							        <input type='text' value='' name='email' class='input_field' required />
 							        <label>Password</label>
 							        <input type='password' value='' name='password' class='input_field' required />
-							        <input type='submit' name='buttonlogin' class='btn-primary' value='Login' alt='Login' id='submit_btn' />
-							        <button class='btn-warning' href='#'>Register</button>
+							        <input type='submit' style="width:200px" name='buttonlogin' class='btn-primary' value='Login' alt='Login' id='submit_btn' />
+							        <a href="index.php?page=daftar">
+							        	<button class='btn-warning' type="button" style="width:200px;margin-top:-6px;">Register</button>
+							        </a>
 						        </form>
 					        </div>
-						<?php }	?>
-						<aside>
+						<?php }	else { ?>
+						<aside style="height:105px;margin-bottom:10px;margin-top:6px;border-radius: 4px;">
+							<section class="popular-recipes">
+								<a href="#"><strong><i class="fa fa-user"></i> Akun Saya</strong></a>
+								<a href="index.php?page=akun-saya">&nbsp; <i class="fa fa-info-circle"></i> Rubah Profil</a>
+								<a href="index.php?page=history">&nbsp; <i class="fa fa-history"></i> Riwayat Transaksi</a>
+								<a href="logout.php">&nbsp; <i class="fa fa-sign-out"></i>Keluar</a>
+							</section>
+						</aside>
+						<?php } ?>
+						<aside style="border-radius: 4px;">
 							<section class="popular-recipes">
 								<?php 
 									$query = mysqli_query($koneksi, "SELECT * FROM `category` where status_category = 'public'");
@@ -137,7 +143,7 @@ session_start();
 																id_category='".$row['id_category']."'");
 										while($subrow = mysqli_fetch_array($subquery)){ 
 									?>
-										<a href="index.php?page=produk&category=<?php echo $subrow['id_sub']; ?>"><img src="images/drop_arrow-hover.png"><?php echo $subrow['name_sub']; ?></a>
+										<a href="index.php?page=produk&category=<?php echo $subrow['id_sub']; ?>"><i class="fa fa-arrow-circle-right"></i> <?php echo $subrow['name_sub']; ?></a>
 									<?php } ?>
 								<?php } ?>
 							</section>
@@ -179,6 +185,15 @@ session_start();
 							    case "kontak":
 							        include "contact.php";
 							        break;
+							    case "transfer":
+							        include "transfer.php";
+							        break;
+							    case "history":
+							        include "history.php";
+							        break;
+							    case "detail-transaksi":
+							        include "detail-history.php";
+							        break;
 						        default:
 						        	include "semua-produk.php";
 							}
@@ -187,34 +202,32 @@ session_start();
 				</tr>
 				<tr>
 					<td colspan="2">
-						<footer>
-						     <div class="section group">
-					         <div class="wrap">	
-						     <div class="section group">
-									<div class="col_1_of_4 span_1_of_4">
+						<footer style="border-radius: 4px;background-color:#03a9f4;color:white">
+						    <div class="section group">
+					         	<div class="wrap">	
+						     		<div class="section group">
+										<div class="col_1_of_4 span_1_of_4">
 											<h4>Layanan</h4>
-											<li><a href="#">Hubungi Kami</a></li>
-											<li><a href="#">Metode Pembayaran</a></li>
-										</div>
-									<div class="col_1_of_4 span_1_of_4">
-										<h4>Tentang Petshop</h4>
-											<li><a href="#">Login</a></li>
-											<li><a href="#">Cara Belanja</a></li>
+											<li><a href="#" style="color:white">Hubungi Kami</a></li>
+											<li><a href="#" style="color:white">Metode Pembayaran</a></li>
+				   	 					</div>
 									</div>
 									<div class="col_1_of_4 span_1_of_4">
+										<h4>Tentang Petshop</h4>
+											<li><a href="#" style="color:white">Login</a></li>
+											<li><a href="#" style="color:white">Cara Belanja</a></li>
+										<h4>Cari Kami</h4>
+									      <a href="#" target="_blank"><i class="fa fa-twitter fa-2" style="color:white;font-size:20px"></i></a>&nbsp;&nbsp;&nbsp;
+									      <a href="#" target="_blank"><i class="fa fa-facebook fa-2" style="color:white;font-size:20px"></i></a>
+									</div>
+									<div class="col_1_of_4 span_1_of_4" style="text-align:center">
 										<h4>JASA PENGIRIMAN</h4>		
 											<span></span><img src="images/jne.png" width="70" height="50"><img src="images/sicepat.png" width="70" height="50"></a>
 					                        <span></span><img src="images/tiki.png" width="70" height="30"> <img src="images/pos1.png" width="70" height="30"></a>
 									</div>
-									<div class="col_1_of_4 span_1_of_4">
+									<div class="col_1_of_4 span_1_of_4" style="text-align:center;">
 										<h4>OPSI PEMBAYARAN</h4>
-												<span></span><img src="images/mandiri.png" width="70" height="30"> <img src="images/BCA.png" width="70" height="30">
-											<div class="social-icons">
-												<h4>Cari Kami</h4>
-												      <a href="#" target="_blank"><img src="images/facebook.png" alt="" /></a>
-												      <a href="#" target="_blank"><img src="images/twitter.png" alt="" /></a>
-												      <div class="clear"></div>
-					   	 					</div>
+											<span></span><img src="images/mandiri.png" width="70" height="30"> <br><img src="images/BCA.png" width="70" height="30">
 									</div>
 								</div>			
 					        </div>

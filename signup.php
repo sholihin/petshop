@@ -16,7 +16,7 @@ $status = 'aktif';
 $sql = "INSERT INTO `user` VALUES (NULL, '$fullname', '$password', '$city', '$country', '$address', '$poscode', '$email', '$phone', '$newdate', '$status')";
 $query = mysqli_query($koneksi, $sql);
 if($query){
-	echo "<script>alert('Registrasi berhasil, silahkan melakukan login..'); window.location.href='index.php?page=masuk';</script>";
+	echo "<script>alert('Registrasi berhasil, silahkan melakukan login..'); window.location.href='index.php';</script>";
 }else{
 	echo "<script>alert('Registrasi gagal, silahkan coba beberapa saat lagi..'); window.location.href='index.php?page=daftar';</script>";
 }

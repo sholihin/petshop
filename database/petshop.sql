@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 08, 2016 at 07:26 
+-- Generation Time: Jun 12, 2016 at 03:55 
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id_admin` bigint(10) UNSIGNED NOT NULL,
+  `id_admin` int(10) UNSIGNED NOT NULL,
   `name_admin` varchar(50) CHARACTER SET utf8 NOT NULL,
   `address_admin` text CHARACTER SET utf8 NOT NULL,
   `email_admin` varchar(100) CHARACTER SET utf8 NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `name_admin`, `address_admin`, `email_admin`, `phone_admin`, `username_admin`, `password_admin`) VALUES
-(7, 'ganang', 'Yogyakarta', 'ganang.julianto@gmail.com', '089678720078', 'Ganang', 'd033e22ae348aeb5660fc2140aec35850c4da997');
+(7, 'admin', 'Citayem', 'qyana@gmail.com', '089678720078', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -50,10 +50,8 @@ INSERT INTO `admin` (`id_admin`, `name_admin`, `address_admin`, `email_admin`, `
 --
 
 CREATE TABLE `bukutamu` (
-  `id_bukutamu` bigint(10) UNSIGNED NOT NULL,
-  `name` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `website` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_member` int(10) UNSIGNED NOT NULL,
   `date` datetime NOT NULL,
   `message` text CHARACTER SET utf8 NOT NULL,
   `status` enum('wait','approve') CHARACTER SET utf8 NOT NULL
@@ -63,8 +61,8 @@ CREATE TABLE `bukutamu` (
 -- Dumping data for table `bukutamu`
 --
 
-INSERT INTO `bukutamu` (`id_bukutamu`, `name`, `email`, `website`, `date`, `message`, `status`) VALUES
-(1, 'ganang', 'ganang@yahoo.com', 'distro.com', '0000-00-00 00:00:00', 'Baju Batik distro palestina.', 'approve');
+INSERT INTO `bukutamu` (`id`, `id_member`, `date`, `message`, `status`) VALUES
+(1, 0, '0000-00-00 00:00:00', 'Baju Batik distro palestina.', 'approve');
 
 -- --------------------------------------------------------
 
@@ -90,7 +88,9 @@ INSERT INTO `cart` (`id`, `id_user`, `id_produk`, `id_header_transaction`, `qty`
 (3, 11, 2, 49, 1, '2016-06-08 11:58:04', 'checkout'),
 (4, 11, 4, 49, 1, '2016-06-08 11:58:04', 'checkout'),
 (5, 11, 2, 49, 1, '2016-06-08 11:58:04', 'checkout'),
-(6, 11, 4, 50, 1, '2016-06-08 11:58:19', 'checkout');
+(6, 11, 4, 50, 1, '2016-06-08 11:58:19', 'checkout'),
+(7, 11, 2, 51, 1, '2016-06-12 12:51:06', 'checkout'),
+(8, 11, 4, 51, 1, '2016-06-12 12:51:06', 'checkout');
 
 -- --------------------------------------------------------
 
@@ -99,9 +99,8 @@ INSERT INTO `cart` (`id`, `id_user`, `id_produk`, `id_header_transaction`, `qty`
 --
 
 CREATE TABLE `category` (
-  `id_category` bigint(10) UNSIGNED NOT NULL,
+  `id_category` int(10) UNSIGNED NOT NULL,
   `name_category` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `category` varchar(30) NOT NULL,
   `status_category` enum('public','draft') CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -109,10 +108,10 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id_category`, `name_category`, `category`, `status_category`) VALUES
-(1, 'Kucing', 'kucing', 'public'),
-(2, 'Anjing', 'anjing', 'public'),
-(3, 'Hewan Lain', 'hewan-lain', 'public');
+INSERT INTO `category` (`id_category`, `name_category`, `status_category`) VALUES
+(1, 'Kucing', 'public'),
+(2, 'Anjing', 'public'),
+(3, 'Hewan Lain', 'public');
 
 -- --------------------------------------------------------
 
@@ -133,7 +132,8 @@ CREATE TABLE `header_transaksi` (
 
 INSERT INTO `header_transaksi` (`id`, `status`, `user_id`, `date`) VALUES
 (49, 'checkout', 11, '2016-06-08 04:58:04'),
-(50, 'checkout', 11, '2016-06-08 04:58:19');
+(50, 'checkout', 11, '2016-06-08 04:58:19'),
+(51, 'checkout', 11, '2016-06-12 05:51:06');
 
 -- --------------------------------------------------------
 
@@ -155,8 +155,39 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`id_invoice`, `status`, `total_tagihan`, `id_header_transaction`, `user_id`, `date`) VALUES
-('INV001', 'checkout', '520000', 49, 11, '2016-06-08 04:58:04'),
-('INV002', 'checkout', '100000', 50, 11, '2016-06-08 04:58:19');
+('INV001', 'diterima', '520000', 49, 11, '2016-06-08 04:58:04'),
+('INV002', 'retur', '100000', 50, 11, '2016-06-08 04:58:19'),
+('INV003', 'checkout', '310000', 51, 11, '2016-06-12 05:51:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `konfirmasi`
+--
+
+CREATE TABLE `konfirmasi` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `invoice` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `total_tagihan` decimal(19,0) NOT NULL,
+  `nama_bank` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `no_rekening` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `atas_nama` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `rekening_tujuan` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `jumlah_bayar` decimal(19,0) NOT NULL,
+  `bukti` text COLLATE utf8_unicode_ci NOT NULL,
+  `keterangan` text COLLATE utf8_unicode_ci NOT NULL,
+  `date` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `konfirmasi`
+--
+
+INSERT INTO `konfirmasi` (`id`, `invoice`, `total_tagihan`, `nama_bank`, `no_rekening`, `atas_nama`, `rekening_tujuan`, `jumlah_bayar`, `bukti`, `keterangan`, `date`) VALUES
+(1, 'INV01', '90000', 'BCA', '123123123123123', 'Qyana', 'BCA', '90000', 'gambar', 'segera kirim ya', '2016-06-12 17:00:00'),
+(2, 'INV02', '90000', 'BCA', '123123123123123', 'Qyana', 'BCA', '90000', 'gambar', 'segera kirim ya', '2016-06-12 17:00:00'),
+(3, 'INV03', '90000', 'BCA', '123123123123123', 'Qyana', 'BCA', '90000', 'gambar', 'segera kirim ya', '2016-06-12 17:00:00'),
+(4, 'INV03', '90000', 'BCA', '123123123123123', 'Qyana', 'BCA', '90000', 'gambar', 'segera kirim ya', '2016-06-12 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -165,7 +196,7 @@ INSERT INTO `invoice` (`id_invoice`, `status`, `total_tagihan`, `id_header_trans
 --
 
 CREATE TABLE `post` (
-  `id_post` bigint(10) UNSIGNED NOT NULL,
+  `id_post` int(10) UNSIGNED NOT NULL,
   `title_post` varchar(50) CHARACTER SET utf8 NOT NULL,
   `type_post` enum('post','page') CHARACTER SET utf8 NOT NULL,
   `content_post` text CHARACTER SET utf8 NOT NULL,
@@ -195,30 +226,27 @@ INSERT INTO `post` (`id_post`, `title_post`, `type_post`, `content_post`, `date_
 --
 
 CREATE TABLE `product` (
-  `id_product` bigint(10) UNSIGNED NOT NULL,
+  `id_product` int(10) UNSIGNED NOT NULL,
   `code_product` varchar(30) CHARACTER SET utf32 NOT NULL,
   `name_product` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `category_product` int(5) UNSIGNED NOT NULL,
+  `id_category` int(5) UNSIGNED NOT NULL,
   `description_product` text CHARACTER SET utf8 NOT NULL,
   `price_product` decimal(19,0) NOT NULL,
-  `size_product` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `color_product` varchar(30) CHARACTER SET utf8 NOT NULL,
   `status_product` enum('public','draft') NOT NULL,
   `date_product` datetime NOT NULL,
-  `stock_product` enum('ada','kosong') NOT NULL,
-  `picture_product` text CHARACTER SET utf8 NOT NULL,
-  `author_product` varchar(100) CHARACTER SET utf8 NOT NULL
+  `stock_product` bigint(10) NOT NULL,
+  `picture_product` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_product`, `code_product`, `name_product`, `category_product`, `description_product`, `price_product`, `size_product`, `color_product`, `status_product`, `date_product`, `stock_product`, `picture_product`, `author_product`) VALUES
-(1, 'bj01', 'Manhattan Man Leather Bag', 1, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '200000', '29.5 cm x 21.5 cm x 7 cm', 'Merah', 'public', '2006-12-20 00:21:19', 'ada', 'manhattan_man_large.jpg', 'admin'),
-(2, 'bj02', 'Baju Hem Pria', 2, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '210000', '29.5 cm x 21.5 cm x 7 cm', 'Biru', 'public', '2014-10-01 08:12:55', 'ada', 'manhattan_woman_small.jpg', 'admin'),
-(3, 'bj03', 'Baju Wanita', 3, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', '29.5 cm x 21.5 cm x 7 cm', 'hijau', 'public', '2014-10-01 08:16:28', 'ada', 'manleatherbag.jpg', 'ganang'),
-(4, 'bj04', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', '29.5 cm x 21.5 cm x 7 cm', 'kuning', 'public', '2014-10-01 09:08:40', 'ada', 'womanleatherbag.jpg', 'admin');
+INSERT INTO `product` (`id_product`, `code_product`, `name_product`, `id_category`, `description_product`, `price_product`, `status_product`, `date_product`, `stock_product`, `picture_product`) VALUES
+(1, 'bj01', 'Manhattan Man Leather Bag', 3, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '200000', 'public', '2006-12-20 00:21:19', 10, '10.jpg'),
+(2, 'bj02', 'Baju Hem Pria', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '210000', 'public', '2014-10-01 08:12:55', 10, '8588290361_ecf8c27021_b.jpg'),
+(3, 'bj03', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 08:16:28', 10, '5.jpg'),
+(4, 'bj04', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 09:08:40', 10, '8.jpg');
 
 -- --------------------------------------------------------
 
@@ -230,7 +258,6 @@ CREATE TABLE `sub-category` (
   `id_sub` int(10) UNSIGNED NOT NULL,
   `id_category` int(10) UNSIGNED NOT NULL,
   `name_sub` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `sub-category` varchar(30) NOT NULL,
   `status` enum('public','draft') CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -238,19 +265,19 @@ CREATE TABLE `sub-category` (
 -- Dumping data for table `sub-category`
 --
 
-INSERT INTO `sub-category` (`id_sub`, `id_category`, `name_sub`, `sub-category`, `status`) VALUES
-(4, 1, 'Makanan', 'makanan', 'public'),
-(5, 1, 'Suplemen', 'suplemen', 'public'),
-(6, 1, 'Perawatan', 'perawatan', 'public'),
-(7, 1, 'Aksesoris', 'aksesoris', 'public'),
-(8, 2, 'Makanan', 'makanan', 'public'),
-(9, 2, 'Suplemen', 'suplemen', 'public'),
-(10, 2, 'Perawatan', 'perawatan', 'public'),
-(11, 2, 'Aksesoris', 'aksesoris', 'public'),
-(12, 3, 'Makanan', 'makanan', 'public'),
-(13, 3, 'Suplemen', 'suplemen', 'public'),
-(14, 3, 'Perawatan', 'perawatan', 'public'),
-(15, 3, 'Aksesoris', 'aksesoris', 'public');
+INSERT INTO `sub-category` (`id_sub`, `id_category`, `name_sub`, `status`) VALUES
+(4, 1, 'Makanan', 'public'),
+(5, 1, 'Suplemen', 'public'),
+(6, 1, 'Perawatan', 'public'),
+(7, 1, 'Aksesoris', 'public'),
+(8, 2, 'Makanan', 'public'),
+(9, 2, 'Suplemen', 'public'),
+(10, 2, 'Perawatan', 'public'),
+(11, 2, 'Aksesoris', 'public'),
+(12, 3, 'Makanan', 'public'),
+(13, 3, 'Suplemen', 'public'),
+(14, 3, 'Perawatan', 'public'),
+(15, 3, 'Aksesoris', 'public');
 
 -- --------------------------------------------------------
 
@@ -277,7 +304,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fullname`, `password`, `city`, `country`, `address`, `poscode`, `email`, `phone`, `date`, `status`) VALUES
-(11, 'Qyana', 'ee11cbb19052e40b07aac0ca060c23ee', 'bogor1', 'indonesia1', 'jl. bambu kuning1', '169221', 'user@user.com', '085711', '2016-06-04 23:58:11', 'aktif');
+(11, 'Qyana', 'ee11cbb19052e40b07aac0ca060c23ee', 'bogor', 'indonesia', 'jl. bambu kuning', '16922', 'user@user.com', '0857110', '2016-06-04 23:58:11', 'blokir');
 
 --
 -- Indexes for dumped tables
@@ -293,7 +320,7 @@ ALTER TABLE `admin`
 -- Indexes for table `bukutamu`
 --
 ALTER TABLE `bukutamu`
-  ADD PRIMARY KEY (`id_bukutamu`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `cart`
@@ -320,6 +347,12 @@ ALTER TABLE `invoice`
   ADD PRIMARY KEY (`id_invoice`);
 
 --
+-- Indexes for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `post`
 --
 ALTER TABLE `post`
@@ -335,7 +368,8 @@ ALTER TABLE `product`
 -- Indexes for table `sub-category`
 --
 ALTER TABLE `sub-category`
-  ADD PRIMARY KEY (`id_sub`);
+  ADD PRIMARY KEY (`id_sub`),
+  ADD KEY `id_category` (`id_category`);
 
 --
 -- Indexes for table `user`
@@ -351,37 +385,42 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `bukutamu`
 --
 ALTER TABLE `bukutamu`
-  MODIFY `id_bukutamu` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `header_transaksi`
 --
 ALTER TABLE `header_transaksi`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+--
+-- AUTO_INCREMENT for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_post` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `sub-category`
 --
@@ -391,7 +430,17 @@ ALTER TABLE `sub-category`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `sub-category`
+--
+ALTER TABLE `sub-category`
+  ADD CONSTRAINT `sub-category_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
