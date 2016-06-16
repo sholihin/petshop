@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 12, 2016 at 03:55 
+-- Generation Time: Jun 16, 2016 at 04:57 
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -90,7 +90,18 @@ INSERT INTO `cart` (`id`, `id_user`, `id_produk`, `id_header_transaction`, `qty`
 (5, 11, 2, 49, 1, '2016-06-08 11:58:04', 'checkout'),
 (6, 11, 4, 50, 1, '2016-06-08 11:58:19', 'checkout'),
 (7, 11, 2, 51, 1, '2016-06-12 12:51:06', 'checkout'),
-(8, 11, 4, 51, 1, '2016-06-12 12:51:06', 'checkout');
+(8, 11, 4, 51, 1, '2016-06-12 12:51:06', 'checkout'),
+(9, 12, 4, 52, 1, '2016-06-15 13:50:35', 'checkout'),
+(10, 12, 4, 53, 5, '2016-06-15 13:50:56', 'checkout'),
+(11, 12, 4, 54, 9, '2016-06-15 13:53:30', 'checkout'),
+(12, 12, 4, 55, 10, '2016-06-15 14:03:05', 'checkout'),
+(13, 12, 2, 56, 1, '2016-06-15 14:04:01', 'checkout'),
+(14, 12, 2, 57, 1, '2016-06-15 16:35:33', 'checkout'),
+(15, 12, 2, 58, 1, '2016-06-15 16:38:26', 'checkout'),
+(16, 12, 2, 59, 1, '2016-06-15 16:40:10', 'checkout'),
+(17, 11, 3, 60, 10, '2016-06-15 20:24:51', 'checkout'),
+(18, 11, 2, 61, 1, '2016-06-16 05:18:40', 'checkout'),
+(19, 11, 1, 61, 1, '2016-06-16 05:18:40', 'checkout');
 
 -- --------------------------------------------------------
 
@@ -133,7 +144,17 @@ CREATE TABLE `header_transaksi` (
 INSERT INTO `header_transaksi` (`id`, `status`, `user_id`, `date`) VALUES
 (49, 'checkout', 11, '2016-06-08 04:58:04'),
 (50, 'checkout', 11, '2016-06-08 04:58:19'),
-(51, 'checkout', 11, '2016-06-12 05:51:06');
+(51, 'checkout', 11, '2016-06-12 05:51:06'),
+(52, 'checkout', 12, '2016-06-15 06:50:35'),
+(53, 'checkout', 12, '2016-06-15 06:50:56'),
+(54, 'checkout', 12, '2016-06-15 06:53:30'),
+(55, 'checkout', 12, '2016-06-15 07:03:05'),
+(56, 'checkout', 12, '2016-06-15 07:04:01'),
+(57, 'checkout', 12, '2016-06-15 09:35:33'),
+(58, 'checkout', 12, '2016-06-15 09:38:26'),
+(59, 'checkout', 12, '2016-06-15 09:40:10'),
+(60, 'checkout', 11, '2016-06-15 13:24:51'),
+(61, 'checkout', 11, '2016-06-15 22:18:40');
 
 -- --------------------------------------------------------
 
@@ -155,9 +176,19 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`id_invoice`, `status`, `total_tagihan`, `id_header_transaction`, `user_id`, `date`) VALUES
-('INV001', 'diterima', '520000', 49, 11, '2016-06-08 04:58:04'),
+('INV001', 'ditolak', '520000', 49, 11, '2016-06-08 04:58:04'),
 ('INV002', 'retur', '100000', 50, 11, '2016-06-08 04:58:19'),
-('INV003', 'checkout', '310000', 51, 11, '2016-06-12 05:51:06');
+('INV003', 'checkout', '310000', 51, 11, '2016-06-12 05:51:06'),
+('INV004', 'checkout', '100000', 52, 12, '2016-06-15 06:50:35'),
+('INV005', 'checkout', '500000', 53, 12, '2016-06-15 06:50:56'),
+('INV006', 'checkout', '900000', 54, 12, '2016-06-15 06:53:30'),
+('INV007', 'checkout', '1000000', 55, 12, '2016-06-15 07:03:05'),
+('INV008', 'checkout', '210000', 56, 12, '2016-06-15 07:04:01'),
+('INV009', 'checkout', '210000', 57, 12, '2016-06-15 09:35:33'),
+('INV010', 'checkout', '210000', 58, 12, '2016-06-15 09:38:26'),
+('INV011', 'checkout', '210000', 59, 12, '2016-06-15 09:40:10'),
+('INV012', 'checkout', '1000000', 60, 11, '2016-06-15 13:24:51'),
+('INV013', 'checkout', '410000', 61, 11, '2016-06-15 22:18:40');
 
 -- --------------------------------------------------------
 
@@ -176,6 +207,7 @@ CREATE TABLE `konfirmasi` (
   `jumlah_bayar` decimal(19,0) NOT NULL,
   `bukti` text COLLATE utf8_unicode_ci NOT NULL,
   `keterangan` text COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(5) UNSIGNED NOT NULL,
   `date` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -183,11 +215,11 @@ CREATE TABLE `konfirmasi` (
 -- Dumping data for table `konfirmasi`
 --
 
-INSERT INTO `konfirmasi` (`id`, `invoice`, `total_tagihan`, `nama_bank`, `no_rekening`, `atas_nama`, `rekening_tujuan`, `jumlah_bayar`, `bukti`, `keterangan`, `date`) VALUES
-(1, 'INV01', '90000', 'BCA', '123123123123123', 'Qyana', 'BCA', '90000', 'gambar', 'segera kirim ya', '2016-06-12 17:00:00'),
-(2, 'INV02', '90000', 'BCA', '123123123123123', 'Qyana', 'BCA', '90000', 'gambar', 'segera kirim ya', '2016-06-12 17:00:00'),
-(3, 'INV03', '90000', 'BCA', '123123123123123', 'Qyana', 'BCA', '90000', 'gambar', 'segera kirim ya', '2016-06-12 17:00:00'),
-(4, 'INV03', '90000', 'BCA', '123123123123123', 'Qyana', 'BCA', '90000', 'gambar', 'segera kirim ya', '2016-06-12 17:00:00');
+INSERT INTO `konfirmasi` (`id`, `invoice`, `total_tagihan`, `nama_bank`, `no_rekening`, `atas_nama`, `rekening_tujuan`, `jumlah_bayar`, `bukti`, `keterangan`, `user_id`, `date`) VALUES
+(8, 'INV010', '210000', 'sdf', '234', '23423', 'mandiri', '234234', '12a.png', 'adfsdfa', 12, '2016-06-15 09:38:41'),
+(9, 'INV011', '210000', 'asdf', 'asd', 'asdf', 'bca', '0', '18.jpg', 'asdfasdf', 12, '2016-06-15 09:40:23'),
+(10, 'INV012', '1000000', 'BCA', '32435436467', 'Qyana', 'mandiri', '1000000', '11a.png', 'bayar makanan kucing', 11, '2016-06-15 13:25:33'),
+(11, 'INV013', '410000', 'sdf', 'asdf', 'asf', 'mandiri', '0', '', 'adsf', 11, '2016-06-15 22:38:55');
 
 -- --------------------------------------------------------
 
@@ -243,10 +275,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_product`, `code_product`, `name_product`, `id_category`, `description_product`, `price_product`, `status_product`, `date_product`, `stock_product`, `picture_product`) VALUES
-(1, 'bj01', 'Manhattan Man Leather Bag', 3, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '200000', 'public', '2006-12-20 00:21:19', 10, '10.jpg'),
-(2, 'bj02', 'Baju Hem Pria', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '210000', 'public', '2014-10-01 08:12:55', 10, '8588290361_ecf8c27021_b.jpg'),
-(3, 'bj03', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 08:16:28', 10, '5.jpg'),
-(4, 'bj04', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 09:08:40', 10, '8.jpg');
+(1, 'bj01', 'Manhattan Man Leather Bag', 3, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '200000', 'public', '2006-12-20 00:21:19', 9, '10.jpg'),
+(2, 'bj02', 'Baju Hem Pria', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '210000', 'public', '2014-10-01 08:12:55', 5, '11.png'),
+(3, 'bj03', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 08:16:28', 0, '5.jpg'),
+(4, 'bj04', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 09:08:40', 0, '8.jpg');
 
 -- --------------------------------------------------------
 
@@ -304,7 +336,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fullname`, `password`, `city`, `country`, `address`, `poscode`, `email`, `phone`, `date`, `status`) VALUES
-(11, 'Qyana', 'ee11cbb19052e40b07aac0ca060c23ee', 'bogor', 'indonesia', 'jl. bambu kuning', '16922', 'user@user.com', '0857110', '2016-06-04 23:58:11', 'blokir');
+(11, 'Qyana', 'ee11cbb19052e40b07aac0ca060c23ee', 'bogor', 'indonesia', 'jl. bambu kuning', '16922', 'user@user.com', '0857110', '2016-06-04 23:58:11', 'aktif'),
+(12, 'Mohamad Sholihin', '6a204bd89f3c8348afd5c77c717a097a', 'bogor', 'indonesia', 'bojong', '16922', 'mohamad.sholihin.it@gmail.com', '04576895678', '2016-06-15 13:00:30', 'aktif');
 
 --
 -- Indexes for dumped tables
@@ -395,22 +428,22 @@ ALTER TABLE `bukutamu`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `header_transaksi`
 --
 ALTER TABLE `header_transaksi`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `konfirmasi`
 --
 ALTER TABLE `konfirmasi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `post`
 --
@@ -430,7 +463,7 @@ ALTER TABLE `sub-category`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Constraints for dumped tables
 --
