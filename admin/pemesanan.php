@@ -22,12 +22,11 @@
           <td>
             <button onclick="window.location.href='index.php?module=detailtransaksi&id=<?php echo $data['id_header_transaction']; ?>'">
             Lihat Detail</button>
-            
           </td>
           <td>
           <form action="updatepemesanan.php" method="POST">
           <input type="hidden" name="id" value="<?php echo $data['id_invoice']; ?>">
-          <input type="hidden" name="id_product" value="<?php echo $data['id_invoice']; ?>">
+          <input type="hidden" name="id_header_transaction" value="<?php echo $data['id_header_transaction']; ?>">
           <select name="status" id="status" onchange="this.form.submit()"">
             <?php 
               $array = array('checkout','konfirmasi','diterima','ditolak','proses','komplain','retur','kembalikan_dana','selesai');

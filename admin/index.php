@@ -66,7 +66,7 @@
         case "detailtransaksi":
             include "detailtransaksi.php";
         break;
-        case "reveiw":
+        case "review":
             include "review.php";
         break;
           default:

@@ -1,4 +1,5 @@
 <?php 
+include "../config/koneksi.php";
 $sql = "
 SELECT
     user.fullname,
@@ -28,7 +29,7 @@ $row = mysqli_fetch_array($query);
     <table id="table1" class="gtable sortable">
       <thead>
         <?php
-          while($row = mysqli_fetch_array($query)){
+          foreach($query as $row){
         ?>
         <tr>
           <td style="text-align:left;width:100px">Nama </td>
@@ -73,7 +74,7 @@ $row = mysqli_fetch_array($query);
       </thead>
       <tbody class="ui-sortable">
         <?php
-          while($data = mysqli_fetch_array($query)){
+          foreach($query as $data){
           $total += ($data['qty'] * $data['price_product']);
         ?>
         <tr>

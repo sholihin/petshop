@@ -1,18 +1,3 @@
-<style>
-table, td, th {
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    padding: 15px;
-}
-</style>
 <?php
 $sql = "
 SELECT
@@ -24,9 +9,11 @@ SELECT
     user.country,
     product.name_product,
     product.price_product,
+    product.id_product,
     cart.qty,
     cart.date,
-    cart.id_header_transaction
+    cart.id_header_transaction,
+    cart.status_pemesan
 FROM `cart`
 INNER JOIN user 
     ON cart.id_user = user.id
@@ -36,9 +23,9 @@ WHERE cart.id_header_transaction = '".$_GET['d']."'";
 $total = 0;
 ?>
 <div class="login" style="margin:0 auto;">
-<article id="detail">
+<article id="transaksi">
 <h2>Detail Pesanan</h2><hr>
-<table id="table1" class="gtable sortable">
+<table id="table1" class="transaksi">
   <thead>
     <tr>
       <th>Nama Barang</th>
@@ -46,6 +33,7 @@ $total = 0;
       <th>Qty</th>
       <th>Tanggal</th>
       <th>Total</th>
+      <th style="text-align:center">Tindakan</th>
       </tr>
   </thead>
   <tbody class="ui-sortable">
@@ -60,13 +48,18 @@ $total = 0;
       <td><?php echo $data['price_product']; ?></td>
       <td><?php echo $data['qty']; ?></td>
       <td><?php echo $data['date']; ?></td>
-      <td><?php echo ($data['qty'] * $data['price_product']); ?></td>
+      <td>Rp. <?php echo ($data['qty'] * $data['price_product']); ?></td>
+      <td style="padding:0px;width:100px;">
+      <button style="width:100px;height:46px;padding:0px;margin:0px;" 
+      <?php if($data['status_pemesan'] == 'checkout'){ echo "disabled"; } ?>
+      class="btn btn-primary" onclick="window.open('index.php?page=review&pid=<?php echo $data['id_product']; ?>')">
+      <i class="fa fa-comments"></i> Review</button></td>
     </tr>
     <?php } ?>
     <tr>
       <td colspan="3" style="text-align:right"></td>
       <td style="text-align:left"><strong>Total Tagihan</strong></td>
-      <td><strong><?php echo $total; ?></strong></td>
+      <td colspan="2"><strong>Rp. <?php echo $total; ?></strong></td>
     </tr>
   </tbody>
 </table>

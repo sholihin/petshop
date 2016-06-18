@@ -1,6 +1,7 @@
 <section id="main" class="grid_9 push_3">
   <article id="dashboard">
     <h2>Daftar Member</h2><hr>
+    <div style="overflow-x:scroll">
     <table id="table1" class="gtable sortable">
       <thead>
         <tr>
@@ -37,7 +38,7 @@
           <td><?php echo $data['status']; ?></td>
           <td>
              <a href="?module=editmember&id=<?php echo $data['id']; ?>" title="Edit">
-                <img src="images/icons/edit.png" alt="Edit"></a> |
+                <img src="images/icons/edit.png" alt="Edit"></a> 
              <a href="deletemember.php?id=<?php echo $data['id']; ?>" title="Hapus">
                 <img src="images/icons/cross.png" alt="Delete">
              </a>
@@ -46,5 +47,6 @@
         <?php } ?>
       </tbody>
     </table>
+    </div>
   </article>
 </section>

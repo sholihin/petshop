@@ -14,7 +14,7 @@ $sql = "
 		  ON invoice.user_id = user.id
 		WHERE 
 		invoice.date BETWEEN '".$_GET['from']." 00:00:00' AND '".$_GET['to']." 23:59:00' AND
-		invoice.status = 'checkout'
+		invoice.status = 'selesai'
 		ORDER BY invoice.id_invoice ASC
        ";
 $rs = mysqli_query($koneksi, $sql);

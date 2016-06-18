@@ -124,16 +124,17 @@ zoom: 1;
 .col_1_of_4 {
 display: block;
 float: left;
-margin:0% 0 9% 3.6%;
+margin:0px 10px;
 }
 .col_1_of_4:first-child {
 margin-left: 0;
 }
 .span_1_of_4{
-width:22.3%;
+width:200px;
+margin: 0 auto;
 }
 .wrap {
-width: 90%;
+/*width: 90%;*/
 }
 .clear{
 clear:both !important;
@@ -219,14 +220,14 @@ line-height:30px;
 img {
 	max-width: 175%;
 	max-height: 80%;
-	height: aotu;
+	height: auto;
 }
 ul,ol{
 	list-style: none;
 }
 /** END SLIDER **/
-.container { /*posisi letak slider*/
-margin:105 auto;
+.container { 
+margin:0 auto;
 position:relative;
 overflow:hidden;
 border: 1px solid #D0D0D0;

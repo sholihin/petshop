@@ -32,10 +32,10 @@ $row = mysqli_fetch_array($query);
 					</tr>
 					<tr>
 						<td>
-							<input type="number" max="999" min="1" value="1" name="qty" style="width:30px" id="qty">
+							<input type="number" max="999" min="1" value="1" name="qty" style="width:53px;padding: 5px 10px" id="qty">
 						</td>
 						<td>
-							<input type="number" max="999" min="1" value="<?php echo $row['stock_product']; ?>" readonly name="stock" style="width:30px" id="stock">
+							<input type="number" max="999" min="1" value="<?php echo $row['stock_product']; ?>" readonly name="stock" style="width:53px;padding: 5px 10px" id="stock">
 						</td>
 					</tr>
 					<tr>

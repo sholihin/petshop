@@ -1,23 +1,8 @@
-<style>
-table, td, th {
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    padding: 15px;
-}
-</style>
 <div class="login" style="margin:0 auto;">
 <article id="detail">
     <h2>Riwayat Pemesanan</h2><hr>
     <div>
-    <table id="table1" class="gtable sortable">
+    <table id="table1" class="transaksi">
       <thead>
         <tr>
           <th>Invoice</th>

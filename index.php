@@ -2,8 +2,7 @@
 include "config/koneksi.php";
 session_start();
 ?>
-<!DOCTYPE html>
-<html>
+<html style="max-height:100%">
 <head>
 <title>PetshopKu : Belanja Kebutuhan Hewan Peliharaan Anda!</title>
 <link rel="stylesheet" href="assets/style.css" type="text/css" media="all"/>
@@ -13,10 +12,30 @@ session_start();
 <script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="assets/js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="assets/jquery-flickity/flickity.pkgd.js"></script>
+<style>
+.transaksi td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.transaksi {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.transaksi th, .transaksi td {
+    padding: 15px;
+}
+.site-footer, .page-wrap:after {
+  height: 60px; 
+  width: 1000px;
+  margin:0 auto;
+}
+</style>
 <meta charset="utf-8">
 </head>
 	<body>
-			<table style="width:1000px;margin:0 auto;">
+			<table style="width:1000px;margin:0 auto;" class="page-wrap">
 				<tr>
 					<td colspan="2">
 						 <header>
@@ -194,47 +213,42 @@ session_start();
 							    case "detail-transaksi":
 							        include "detail-history.php";
 							        break;
+							    case "review":
+							        include "review.php";
+							        break;
 						        default:
 						        	include "semua-produk.php";
 							}
 						?>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2">
-						<footer style="border-radius: 4px;background-color:#03a9f4;color:white">
-						    <div class="section group">
-					         	<div class="wrap">	
-						     		<div class="section group">
-										<div class="col_1_of_4 span_1_of_4">
-											<h4>Layanan</h4>
-											<li><a href="#" style="color:white">Hubungi Kami</a></li>
-											<li><a href="#" style="color:white">Metode Pembayaran</a></li>
-				   	 					</div>
-									</div>
-									<div class="col_1_of_4 span_1_of_4">
-										<h4>Tentang Petshop</h4>
-											<li><a href="#" style="color:white">Login</a></li>
-											<li><a href="#" style="color:white">Cara Belanja</a></li>
-										<h4>Cari Kami</h4>
-									      <a href="#" target="_blank"><i class="fa fa-twitter fa-2" style="color:white;font-size:20px"></i></a>&nbsp;&nbsp;&nbsp;
-									      <a href="#" target="_blank"><i class="fa fa-facebook fa-2" style="color:white;font-size:20px"></i></a>
-									</div>
-									<div class="col_1_of_4 span_1_of_4" style="text-align:center">
-										<h4>JASA PENGIRIMAN</h4>		
-											<span></span><img src="images/jne.png" width="70" height="50"><img src="images/sicepat.png" width="70" height="50"></a>
-					                        <span></span><img src="images/tiki.png" width="70" height="30"> <img src="images/pos1.png" width="70" height="30"></a>
-									</div>
-									<div class="col_1_of_4 span_1_of_4" style="text-align:center;">
-										<h4>OPSI PEMBAYARAN</h4>
-											<span></span><img src="images/mandiri.png" width="70" height="30"> <br><img src="images/BCA.png" width="70" height="30">
-									</div>
-								</div>			
-					        </div>
-						</footer>
-					</td>
-				</tr>
 			</table>
+			<footer style="border-radius: 4px;background-color:#03a9f4;color:white;" class="site-footer">
+				<div style="margin:0 auto;width:850px;">
+					<div class="col_1_of_4 span_1_of_4">
+						<h4>Layanan</h4>
+						<li><a href="#" style="color:white">Hubungi Kami</a></li>
+						<li><a href="#" style="color:white">Metode Pembayaran</a></li>
+	 					</div>
+					<div class="col_1_of_4 span_1_of_4">
+						<h4>Tentang Petshop</h4>
+							<li><a href="#" style="color:white">Login</a></li>
+							<li><a href="#" style="color:white">Cara Belanja</a></li>
+						<h4>Cari Kami</h4>
+					      <a href="#" target="_blank"><i class="fa fa-twitter fa-2" style="color:white;font-size:20px"></i></a>&nbsp;&nbsp;&nbsp;
+					      <a href="#" target="_blank"><i class="fa fa-facebook fa-2" style="color:white;font-size:20px"></i></a>
+					</div>
+					<div class="col_1_of_4 span_1_of_4" style="text-align:center">
+						<h4>JASA PENGIRIMAN</h4>		
+							<span></span><img src="images/jne.png" width="70" height="50"><img src="images/sicepat.png" width="70" height="50"></a>
+	                        <span></span><img src="images/tiki.png" width="70" height="30"> <img src="images/pos1.png" width="70" height="30"></a>
+					</div>
+					<div class="col_1_of_4 span_1_of_4" style="text-align:center;">
+						<h4>OPSI PEMBAYARAN</h4>
+							<span></span><img src="images/mandiri.png" width="70" height="30"> <br><img src="images/BCA.png" width="70" height="30">
+					</div>
+				</div>
+			</footer>
 	</body>
 </html>
 <script>

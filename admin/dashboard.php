@@ -13,7 +13,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="?module=admin">
+			<a href="index.php?module=gantipassword">
 				<img src="images/eleganticons/Person-group.png">
 				<span>Administrator</span>
 			</a>
