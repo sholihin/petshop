@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+<link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css" media="all"/>
 <!-- <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"> -->
 </head>
 <body>

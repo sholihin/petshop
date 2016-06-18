@@ -13,7 +13,7 @@
       <tbody class="ui-sortable">
         <?php
           include "../config/koneksi.php";
-          $query = mysqli_query($koneksi, "SELECT * FROM `invoice` ORDER BY `id_invoice` ASC");
+          $query = mysqli_query($koneksi, "SELECT * FROM `invoice` ORDER BY `id_invoice` DESC");
           while($data = mysqli_fetch_array($query)){
         ?>
         <tr>
