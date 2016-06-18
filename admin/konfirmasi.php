@@ -31,7 +31,7 @@
           <td><?php echo $data['atas_nama']; ?></td>
           <td><?php echo $data['rekening_tujuan']; ?></td>
           <td><?php echo $data['jumlah_bayar']; ?></td>
-          <td><?php echo $data['bukti']; ?></td>
+          <td><img src="../buktibayar/<?php echo $data['bukti']; ?>" style="width:70px;"></td>
           <td><?php echo $data['keterangan']; ?></td>
           <td><?php echo $data['date']; ?></td>
         </tr>
