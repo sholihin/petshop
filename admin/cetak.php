@@ -35,9 +35,9 @@ class PDF extends FPDF {
 	    $this->SetFont('Arial','I',8);
 	    // Print centered page number
 	    // $this->Cell(0,10,'Page '.$this->PageNo(),0,0,'C');
-	    $this->Cell(0,5,"SAHABAT DANAU TOBA",0,1,"L");
-		$this->Cell(0,5,"Jl. Mesjid Bendungan no. 10-11, Cawang III, Kelurahan Cawang, Jakarta timur 13630.",0,1,"L");
-		$this->Cell(0,5,"Telepon (62-21) 8088 0255, 809 1787 Faksimili (62-21) 8088 4374, website : www.danautoba.org .",0,1,"L");
+	    $this->Cell(0,5,"PETSHOPKU",0,1,"L");
+		$this->Cell(0,5,"Jl. Pabuaran, Citayam, Kelurahan Citayam, Depok.",0,1,"L");
+		$this->Cell(0,5,"Telepon (62-21) 888 9999, 888 7777, website : www.petshopku.com .",0,1,"L");
 	}
 }
 
