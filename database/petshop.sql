@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2016 at 04:57 
+-- Generation Time: Jun 21, 2016 at 06:28 
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -85,23 +85,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `id_user`, `id_produk`, `id_header_transaction`, `qty`, `date`, `status_pemesan`) VALUES
-(3, 11, 2, 49, 1, '2016-06-08 11:58:04', 'checkout'),
-(4, 11, 4, 49, 1, '2016-06-08 11:58:04', 'checkout'),
-(5, 11, 2, 49, 1, '2016-06-08 11:58:04', 'checkout'),
-(6, 11, 4, 50, 1, '2016-06-08 11:58:19', 'checkout'),
-(7, 11, 2, 51, 1, '2016-06-12 12:51:06', 'checkout'),
-(8, 11, 4, 51, 1, '2016-06-12 12:51:06', 'checkout'),
-(9, 12, 4, 52, 1, '2016-06-15 13:50:35', 'checkout'),
-(10, 12, 4, 53, 5, '2016-06-15 13:50:56', 'checkout'),
-(11, 12, 4, 54, 9, '2016-06-15 13:53:30', 'checkout'),
-(12, 12, 4, 55, 10, '2016-06-15 14:03:05', 'checkout'),
-(13, 12, 2, 56, 1, '2016-06-15 14:04:01', 'checkout'),
-(14, 12, 2, 57, 1, '2016-06-15 16:35:33', 'checkout'),
-(15, 12, 2, 58, 1, '2016-06-15 16:38:26', 'checkout'),
-(16, 12, 2, 59, 1, '2016-06-15 16:40:10', 'checkout'),
-(17, 11, 3, 60, 10, '2016-06-15 20:24:51', 'checkout'),
-(18, 11, 2, 61, 1, '2016-06-16 05:18:40', 'checkout'),
-(19, 11, 1, 61, 1, '2016-06-16 05:18:40', 'checkout');
+(1, 11, 4, 1, 1, '2016-06-18 10:14:41', 'buy'),
+(2, 11, 3, 2, 1, '2016-06-18 12:35:35', 'buy');
 
 -- --------------------------------------------------------
 
@@ -142,19 +127,8 @@ CREATE TABLE `header_transaksi` (
 --
 
 INSERT INTO `header_transaksi` (`id`, `status`, `user_id`, `date`) VALUES
-(49, 'checkout', 11, '2016-06-08 04:58:04'),
-(50, 'checkout', 11, '2016-06-08 04:58:19'),
-(51, 'checkout', 11, '2016-06-12 05:51:06'),
-(52, 'checkout', 12, '2016-06-15 06:50:35'),
-(53, 'checkout', 12, '2016-06-15 06:50:56'),
-(54, 'checkout', 12, '2016-06-15 06:53:30'),
-(55, 'checkout', 12, '2016-06-15 07:03:05'),
-(56, 'checkout', 12, '2016-06-15 07:04:01'),
-(57, 'checkout', 12, '2016-06-15 09:35:33'),
-(58, 'checkout', 12, '2016-06-15 09:38:26'),
-(59, 'checkout', 12, '2016-06-15 09:40:10'),
-(60, 'checkout', 11, '2016-06-15 13:24:51'),
-(61, 'checkout', 11, '2016-06-15 22:18:40');
+(1, 'checkout', 11, '2016-06-18 03:14:41'),
+(2, 'checkout', 11, '2016-06-18 05:35:35');
 
 -- --------------------------------------------------------
 
@@ -176,19 +150,8 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`id_invoice`, `status`, `total_tagihan`, `id_header_transaction`, `user_id`, `date`) VALUES
-('INV001', 'ditolak', '520000', 49, 11, '2016-06-08 04:58:04'),
-('INV002', 'retur', '100000', 50, 11, '2016-06-08 04:58:19'),
-('INV003', 'checkout', '310000', 51, 11, '2016-06-12 05:51:06'),
-('INV004', 'checkout', '100000', 52, 12, '2016-06-15 06:50:35'),
-('INV005', 'checkout', '500000', 53, 12, '2016-06-15 06:50:56'),
-('INV006', 'checkout', '900000', 54, 12, '2016-06-15 06:53:30'),
-('INV007', 'checkout', '1000000', 55, 12, '2016-06-15 07:03:05'),
-('INV008', 'checkout', '210000', 56, 12, '2016-06-15 07:04:01'),
-('INV009', 'checkout', '210000', 57, 12, '2016-06-15 09:35:33'),
-('INV010', 'checkout', '210000', 58, 12, '2016-06-15 09:38:26'),
-('INV011', 'checkout', '210000', 59, 12, '2016-06-15 09:40:10'),
-('INV012', 'checkout', '1000000', 60, 11, '2016-06-15 13:24:51'),
-('INV013', 'checkout', '410000', 61, 11, '2016-06-15 22:18:40');
+('INV001', 'selesai', '100000', 1, 11, '2016-06-18 03:14:41'),
+('INV002', 'checkout', '100000', 2, 11, '2016-06-18 05:35:35');
 
 -- --------------------------------------------------------
 
@@ -224,36 +187,6 @@ INSERT INTO `konfirmasi` (`id`, `invoice`, `total_tagihan`, `nama_bank`, `no_rek
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
---
-
-CREATE TABLE `post` (
-  `id_post` int(10) UNSIGNED NOT NULL,
-  `title_post` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `type_post` enum('post','page') CHARACTER SET utf8 NOT NULL,
-  `content_post` text CHARACTER SET utf8 NOT NULL,
-  `date_post` datetime NOT NULL,
-  `author_post` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `status_post` enum('public','draft') CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`id_post`, `title_post`, `type_post`, `content_post`, `date_post`, `author_post`, `status_post`) VALUES
-(1, 'Pameran Batik', 'post', '<p>Pameran Batik JE. Distro palestina mengikuti pameran batik dengan penuh semangat dan menawarkan beberapa produk dengan harga terjangkau. Kualitas produk baik dan konsumen diharapkan puas dengan layanan kami.</p>', '2014-10-01 09:27:16', 'admin', 'public'),
-(2, 'Profil', 'page', 'Ini merupakan Profil kami', '2006-12-20 01:26:02', 'gng', 'public'),
-(8, 'Sejarah', 'page', '<p>Sejarah berdirinya perusahaan ini</p>', '2006-12-20 05:22:21', 'gng', 'public'),
-(9, 'Galery', 'page', '<p>Galery Foto usaha ini</p>', '2006-12-20 05:24:39', 'gng', 'public'),
-(10, 'Contact US', 'page', '<p>Berisi Kontak Person yang ada/p>', '2006-12-20 05:24:57', 'gng', 'public'),
-(11, 'Pertunjukan galery', 'post', '<p>Pertunjukan Galery motiv batik distro palestina dengan berbagai macam warna dan ukuran. Distro Palestina &ndash; Bandung Tanggal: 1 &ndash; 7 Desember 2014 Tempat:&nbsp;BTC FASHION MALL, Bandung Waktu: 10.00 &ndash; 21.00 WIB Pameran ini dielenggarakan sebagai wujud kecintaan&nbsp; kepada budaya sekaligus mencari bakat kreatif dari para pencinta batik, bordir dan tenun nusantara. Diharapkan dengan adanya Pameran Batik di Bandung&nbsp;ini maka batik, bordir dan tenun Indonesia dapat terus lestari sepanjang masa, sehingga karya cipta nusantara ini</p>', '2014-11-29 20:16:45', 'ganang', 'public'),
-(12, 'Pemasaran Distrto Palestina', 'post', '<p style="text-align: justify;"><em><strong>Peminat produk distro palestina&nbsp; beragam.</strong></em> Tidak hanya &nbsp;di <span style="color: #ff0000;">Yogyakarta</span> saja, tetapi sudah sampai &nbsp;Jakarta, Bandung, Bali, dan beberapa kota besar lainnya. Seiring dengan perkembangan pasar, saat ini produk distro palestinasudah menembus ke pasar luar negeri.&nbsp; Untuk pasar ekspor misalnya, kap lampu peminatnya terbanyak dari Yunani, kaligrafi dari Turki, sedangkan penyekat buku banyak diminati pasar Jepang dan Amerika.&nbsp;</p>', '2006-12-20 18:13:28', 'gng', 'public'),
-(13, 'Distro Palestina Clothing Line', 'post', '<p style="text-align: justify;"><span style="color: #800000;"><strong>Distrto Palestina</strong></span> adalah clothing line yang berdiri sejak tahun 2006. mempunyai semua item yang dibutuhkan seperti kaos , kemeja , tas , jaket , topi , sandal , boxer , celana , dress , dll dengan 114 titik distribusi yang tersebar di 33 provinsi Indonesia dan terus bertambah seiring permintaan pasar. Berawal dari pemikiran edialisme founder yang ingin menghasilkan produk-produk yang kreatif, fleksibel serta bisa mencerminkan gaya hidup anak muda zaman sekarang Untuk menjaga kualitas dan layanan bagi konsumennya, perusahaan mulai melakukan pembenahan manajemen yang lebih efektif karena sudah memiliki tempat produksi, dan gudang serta kantor sendiri. pasar luas kami berkisar dari remaja kepada semua orang bahwa orang-orang berpikiran terbuka, mandiri, dan modern. Selain itu, kami menghasilkan setiap detail produk kami dengan kualitas terbaik dan dirilis setiap produk dalam jumlah dan penawaran eksklusif dengan harga terjangkau.</p>', '2014-11-29 20:12:27', 'gng', 'public');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `product`
 --
 
@@ -275,10 +208,25 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_product`, `code_product`, `name_product`, `id_category`, `description_product`, `price_product`, `status_product`, `date_product`, `stock_product`, `picture_product`) VALUES
-(1, 'bj01', 'Manhattan Man Leather Bag', 3, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '200000', 'public', '2006-12-20 00:21:19', 9, '10.jpg'),
-(2, 'bj02', 'Baju Hem Pria', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '210000', 'public', '2014-10-01 08:12:55', 5, '11.png'),
-(3, 'bj03', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 08:16:28', 0, '5.jpg'),
-(4, 'bj04', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 09:08:40', 0, '8.jpg');
+(1, 'bj01', 'Manhattan Man Leather Bag', 3, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '200000', 'public', '2006-12-20 00:21:19', 1, '10.jpg'),
+(2, 'bj02', 'Baju Hem Pria', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '210000', 'public', '2014-10-01 08:12:55', 7, '11.png'),
+(3, 'bj03', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 08:16:28', 19, '5.jpg'),
+(4, 'bj04', 'Baju Wanita', 4, 'Ukobag berkomitmen untuk membuat tas dengan kualitas terbaik dan juga mendukung global worming, oleh sebab itu tas yang anda beli hanya di buat saat di pesan tidak menggunakan sistem stok barang. Lamanya proses kerja adalah sekitar 5 minggu setelah pembayaran Anda dikonfirmasi.', '100000', 'public', '2014-10-01 09:08:40', 6, '8.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `komentar` text CHARACTER SET utf8 NOT NULL,
+  `date` datetime NOT NULL,
+  `product_id` int(5) UNSIGNED NOT NULL,
+  `user_id` int(5) UNSIGNED NOT NULL,
+  `status` enum('aktif','blok') CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -386,16 +334,16 @@ ALTER TABLE `konfirmasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `post`
---
-ALTER TABLE `post`
-  ADD PRIMARY KEY (`id_post`);
-
---
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id_product`);
+
+--
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sub-category`
@@ -428,32 +376,32 @@ ALTER TABLE `bukutamu`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `header_transaksi`
 --
 ALTER TABLE `header_transaksi`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `konfirmasi`
 --
 ALTER TABLE `konfirmasi`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT for table `post`
---
-ALTER TABLE `post`
-  MODIFY `id_post` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sub-category`
 --
