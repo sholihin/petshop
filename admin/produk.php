@@ -30,6 +30,8 @@
           <dd> : <textarea name="description_product" rows="10" cols="30"></textarea></dd>
           <dt><label>Price Product</label></dt>
           <dd> : <input type="text" name="price_product" value="" size="30"></dd>
+          <dt><label>Weight (g)</label></dt>
+          <dd> : <input type="number" name="weight" value="" size="30" placeholder="gram"></dd>
           <dt><label>Status</label></dt>
           <dd> : 
                <label><input type="radio" name="status_product" value="public">

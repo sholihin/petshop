@@ -7,6 +7,7 @@ $name_product = $_POST['name_product'];
 $id_category = $_POST['id_category'];
 $description_product = $_POST['description_product'];
 $price_product = $_POST['price_product'];
+$weight = $_POST['weight'];
 $status_product = $_POST['status_product'];
 $stock_product = $_POST['stock_product'];
 
@@ -17,7 +18,7 @@ if(isset($_FILES['picture_product'])){
 }
 
 $sql = "
-INSERT INTO `product` VALUES(NULL, '".$code_product."', '".$name_product."', '".$id_category."', '".$description_product."', '".$price_product."', '".$status_product."', '".$date."', '".$stock_product."', '".$file_name."')";
+INSERT INTO `product` VALUES(NULL, '".$code_product."', '".$name_product."', '".$id_category."', '".$description_product."', '".$price_product."', '".$weight."', '".$status_product."', '".$date."', '".$stock_product."', '".$file_name."')";
 
 $query = mysqli_query($koneksi, $sql);
 if($query){

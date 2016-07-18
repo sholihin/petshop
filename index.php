@@ -245,7 +245,7 @@ session_start();
 					</div>
 					<div class="col_1_of_4 span_1_of_4" style="text-align:center;">
 						<h4>OPSI PEMBAYARAN</h4>
-							<span></span><img src="images/mandiri.png" width="70" height="30"> <br><img src="images/BCA.png" width="70" height="30">
+							<span></span><img src="images/mandiri.png" width="70" height="30"> <br><img src="images/bca.png" width="70" height="30">
 					</div>
 				</div>
 			</footer>

@@ -24,10 +24,13 @@ $row = mysqli_fetch_array($query);
 				<table>
 					<tr>
 						<td>
-							Quantity
+							Jumlah
 						</td>
 						<td>
-							Stok Produk
+							Stok
+						</td>
+						<td>
+							Berat
 						</td>
 					</tr>
 					<tr>
@@ -37,13 +40,16 @@ $row = mysqli_fetch_array($query);
 						<td>
 							<input type="number" max="999" min="1" value="<?php echo $row['stock_product']; ?>" readonly name="stock" style="width:53px;padding: 5px 10px" id="stock">
 						</td>
+						<td>
+							<input type="number" max="999" min="1" value="<?php echo $row['weight']; ?>" readonly name="weight" style="width:65px;padding: 5px 10px" id="weight">
+						</td>
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td colspan="3">
 							<?php if($row['stock_product'] > 0){ ?>
-							<input type="button" onclick="ceksebelumorder()" class="btn-warning" value="BELI" style="margin-top:0px;height:25px;width: 112px;">
+							<input type="button" onclick="ceksebelumorder()" class="btn-warning" value="BELI" style="margin-top:0px;height:25px;width: 179px;">
 							<? }else{ ?>
-							<input type="submit" disabled class="btn-warning" value="Stok Kosong" style="margin-top:0px;height:25px;background-color:#eee;color:black;width: 112px;">
+							<input type="submit" disabled class="btn-warning" value="Stok Kosong" style="margin-top:0px;height:25px;background-color:#eee;color:black;width: 179px;">
 							<?php } ?>
 						</td>
 					</tr>

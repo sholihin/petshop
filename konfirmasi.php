@@ -14,7 +14,7 @@ Harap menyimpan nomor pesanan Anda dalam kasus ada masalah.<br><br>
 jumlah total Anda membayar adalah <b>IDR <?php echo number_format($row['total_tagihan']); ?></b><br>
 Anda dapat melakukan pembayaran melalui transfer ke <br><br>
 <b>BCA 123456789 (petshopku) </b><br>
-<a href="http://www.klikbca.com/" target="_blank"><img src="img/bca.jpg" class="bca" width="150px""> </a><br>
+<a href="http://www.klikbca.com/" target="_blank"><img src="images/bca.png" class="bca" width="150px""> </a><br>
 <b>Mandiri 123456789 (petshopku) </b><br>
 <a href="http://www.mandiri.co.id/" target="_blank"><img src="images/mandiri.png" class="bca" width="150px"> </a><br><br>
 

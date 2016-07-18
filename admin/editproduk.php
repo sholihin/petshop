@@ -38,6 +38,8 @@ $row = mysqli_fetch_array($query);
           <dd> : <textarea name="description_product" rows="10" cols="30"><?php echo $row['description_product']; ?></textarea></dd>
           <dt><label>Price Product</label></dt>
           <dd> : <input type="text" name="price_product" value="<?php echo $row['price_product']; ?>" size="30"></dd>
+          <dt><label>Weight (g)</label></dt>
+          <dd> : <input type="text" name="weight" value="<?php echo $row['weight']; ?>" size="30"></dd>
           <dt><label>Status</label></dt>
           <dd> : 
                <label><input type="radio" name="status_product" value="public" <?php if($row['status_product']=="public") echo "checked"; ?>>
