@@ -10,9 +10,9 @@ $row = mysqli_fetch_array($query);
 	<input type="hidden" name="price_product" value="<?php echo $row['price_product']; ?>">
 	<table style="width:100%;">
 		<tr>
-			<td style="border:1px solid #eee;width:325px">
+			<td style="border:1px solid #eee;width:325px;overflow: hidden;">
 				<a class="example-image-link" href="img/<?php echo $row['picture_product']; ?>" data-lightbox="example-1">
-				<img class="example-image" alt="image-1" src="img/<?php echo $row['picture_product']; ?>" id="front_leather" style="padding:15px;">
+				<img class="example-image" alt="image-1" src="img/<?php echo $row['picture_product']; ?>" id="front_leather" style="padding:15px;left:-1px;position: relative;width:295px;height:auto">
 				</a>
 			</td>
 			<td>&nbsp;</td>

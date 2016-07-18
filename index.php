@@ -65,7 +65,7 @@ session_start();
 							</div> 
 
 							<!-- Logo -->     
-									<img src="images/logologo2.jpg" >
+									<img src="images/logopetshop2.jpg" >
 					        <!-- end logo -->
 					        
 					        <!--navbar-->        
@@ -73,7 +73,7 @@ session_start();
 							     <!--cari-->
 							<div class="cari">
 							    <form>
-								    <input type="text" value="Cari" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Cari';}" style="margin: 4px 4px;">
+								    <input type="text" name="txtKeyword" placeholder="tekan ctrl+f" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Cari';}" style="margin: 4px 4px;">
 							    </form>
 							</div>
 							     <!--end cari-->
@@ -84,7 +84,7 @@ session_start();
 									<li><a href="index.php?page=tentang">
 										<strong><i class="fa fa-user"></i> Tentang Kami</strong></a></li>
 									<li><a href="index.php?page=bantuan">
-										<strong><i class="fa fa-shopping-bag"></i> Cara Pembayaran</strong></a></li>
+										<strong><i class="fa fa-shopping-bag"></i> Cara Belanja</strong></a></li>
 							        <li><a href="index.php?page=kontak">
 							        	<strong><i class="fa fa-phone"></i> Kontak</strong></a></li>
 								</ul>
@@ -143,10 +143,10 @@ session_start();
 						<?php }	else { ?>
 						<aside style="height:105px;margin-bottom:10px;margin-top:6px;border-radius: 4px;">
 							<section class="popular-recipes">
-								<a href="#"><strong><i class="fa fa-user"></i> Akun Saya</strong></a>
+								<a><strong><i class="fa fa-user"></i> Akun Saya</strong></a>
 								<a href="index.php?page=akun-saya">&nbsp; <i class="fa fa-info-circle"></i> Rubah Profil</a>
 								<a href="index.php?page=history">&nbsp; <i class="fa fa-history"></i> Riwayat Transaksi</a>
-								<a href="logout.php">&nbsp; <i class="fa fa-sign-out"></i>Keluar</a>
+								<a href="index.php?page=konfirmasi">&nbsp; <i class="fa fa-sign-out"></i>Konfirmasi</a>
 							</section>
 						</aside>
 						<?php } ?>
@@ -156,7 +156,7 @@ session_start();
 									$query = mysqli_query($koneksi, "SELECT * FROM `category` where status_category = 'public'");
 									while($row = mysqli_fetch_array($query)){
 								?>
-								<a href=""><b><?php echo $row['name_category']; ?></b></a>
+								<a><b><?php echo $row['name_category']; ?></b></a>
 									<?php 
 										$subquery = mysqli_query($koneksi, "SELECT * FROM `sub-category` where 
 																id_category='".$row['id_category']."'");
@@ -168,7 +168,7 @@ session_start();
 							</section>
 						</aside>
 					</td>
-					<td style="vertical-align: top;padding:15px;margin:0 auto;text-align:center;width:800px">
+					<td style="vertical-align: top;padding:15px;margin:0 auto;text-align:justify;width:800px">
 						<?php
 							switch ($_GET['page']) {
 							    case "produk":
@@ -227,15 +227,15 @@ session_start();
 				<div style="margin:0 auto;width:850px;">
 					<div class="col_1_of_4 span_1_of_4">
 						<h4>Layanan</h4>
-						<li><a href="#" style="color:white">Hubungi Kami</a></li>
+						<li><a href="index.php?page=kontak" style="color:white">Hubungi Kami</a></li>
 						<li><a href="#" style="color:white">Metode Pembayaran</a></li>
 	 					</div>
 					<div class="col_1_of_4 span_1_of_4">
 						<h4>Tentang Petshop</h4>
-							<li><a href="#" style="color:white">Login</a></li>
-							<li><a href="#" style="color:white">Cara Belanja</a></li>
+							<li><a href="index.php?page=home" style="color:white">Login</a></li>
+							<li><a href="index.php?page=bantuan" style="color:white">Cara Belanja</a></li>
 						<h4>Cari Kami</h4>
-					      <a href="#" target="_blank"><i class="fa fa-twitter fa-2" style="color:white;font-size:20px"></i></a>&nbsp;&nbsp;&nbsp;
+					      <a href="www.facebook.com" target="_blank"><i class="fa fa-twitter fa-2" style="color:white;font-size:20px"></i></a>&nbsp;&nbsp;&nbsp;
 					      <a href="#" target="_blank"><i class="fa fa-facebook fa-2" style="color:white;font-size:20px"></i></a>
 					</div>
 					<div class="col_1_of_4 span_1_of_4" style="text-align:center">

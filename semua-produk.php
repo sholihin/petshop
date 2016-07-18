@@ -33,9 +33,9 @@ if($numrow > 0){
 	echo "Maaf.. Belum ada barang yang tersedia..";
 }
 ?>
-<div style="margin:50px 0px;">
+<!-- <div style="margin:50px 0px;">
 <h5 style="float: left; border: 1px solid #EFEFEF; padding: 4px 15px; margin: 13px 0 0 20px; border-bottom: 0;">
-HARGA TERMURAH
+TERLARIS
 </h5>
 <div class="clear" style="border-top: 1px solid #EFEFEF; height: 13px;">&nbsp;</div>
 <div class="gallery js-flickity">
@@ -67,4 +67,4 @@ if($numrow > 0){
 }else {
 	echo "Maaf.. Belum ada barang yang tersedia..";
 }
-?>
+?> -->

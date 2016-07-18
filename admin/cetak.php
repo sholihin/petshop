@@ -24,7 +24,7 @@ class PDF extends FPDF {
 	    $this->SetFont('Arial','B',14);
 	    // Move to the right $this->Cell(80);
 	    // Framed title
-	    $this->Cell(0,7,"LAPORAN PENJUALAN ONLINE PETSHOPKU",0,1,"C");
+	    $this->Cell(0,7,"LAPORAN PENJUALAN PETSHOP ONLINE",0,1,"C");
 		$this->Cell(0,7,"PERIODE : ".$_GET['from']." - ".$_GET['to']."",0,1,"C");
 		$this->Cell(0,10,"-----------------------------------------------------------------------------",0,1,"C");
 	    // Line break $this->Ln(10);
@@ -37,7 +37,7 @@ class PDF extends FPDF {
 	    // $this->Cell(0,10,'Page '.$this->PageNo(),0,0,'C');
 	    $this->Cell(0,5,"PETSHOPKU",0,1,"L");
 		$this->Cell(0,5,"Jl. Pabuaran, Citayam, Kelurahan Citayam, Depok.",0,1,"L");
-		$this->Cell(0,5,"Telepon (62-21) 888 9999, 888 7777, website : www.petshopku.com .",0,1,"L");
+		$this->Cell(0,5,"Telepon (62-21) 888 9999, 888 7777, Email : Qyana28@gmail .",0,1,"L");
 	}
 }
 
