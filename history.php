@@ -9,6 +9,7 @@
           <th>Total Tagihan</th>
           <th>Status</th>
           <th>Tanggal</th>
+          <th>Aksi</th>
           </tr>
       </thead>
       <tbody class="ui-sortable">
@@ -23,6 +24,7 @@
           <td><?php echo $data['total_tagihan']; ?></td>
           <td><?php echo $data['status']; ?></td>
           <td><?php echo $data['date']; ?></td>
+          <td><a href="index.php?page=transfer&inv=<?php echo $data['id_invoice']; ?>" class="btn btn-primary">Konfirmasi</a></td>
         </tr>
         <?php } ?>
       </tbody>

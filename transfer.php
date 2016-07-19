@@ -1,3 +1,8 @@
+<?php 
+include "config/koneksi.php";
+$query = mysqli_query($koneksi, "SELECT * FROM invoice where id_invoice = '".$_GET['inv']."'");
+$row = mysqli_fetch_array($query);
+?>
 <div class="login" style="margin:0 auto;">
 <form action="bayar.php" method="post" class="validate-form" id="signupform" name="signupform" enctype="multipart/form-data"> 
 	<table id="payment" style="text-align: left;border:1px solid #eee;padding:20px;width:330px;margin-top:-8px;margin: 0 auto;"> 
@@ -7,7 +12,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">Total Tagihan <br />
-	    <input type="text" name="total_tagihan" value="<?php echo $_GET['p']; ?>" readonly required/></td>
+	    <input type="text" name="total_tagihan" value="<?php echo $row['total_tagihan']; ?>" readonly required/></td>
 	</tr>
 	<tr>
 		<td colspan="2">Nama Bank <br />

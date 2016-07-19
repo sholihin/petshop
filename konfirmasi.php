@@ -23,7 +23,7 @@ Anda dapat melakukan pembayaran melalui transfer ke <br><br>
 Kami akan menunggu pembayaran selama kurang lebih <b>2 hari</b>.<br>
 Jika Anda tidak melakukan pembayaran di antara 2 hari, kami akan secara otomatis membatalkan pesanan Anda.<br><br>
 Setelah melakukan pembayaran, silahkan beritahu kami dengan cara menekan tombol dibawah ini<br>
-<button class="btn-warning" type="button" onclick="window.location.href='index.php?page=transfer&inv=<?php echo $row['id_invoice']; ?>&p=<?php echo $row['total_tagihan'] + $_GET['bk']; ?>'">Konfirmasi <i class="fa fa-arrow-circle-right"></i></button>.
+<button class="btn-warning" type="button" onclick="window.location.href='index.php?page=transfer&inv=<?php echo $row['id_invoice']; ?>'">Konfirmasi <i class="fa fa-arrow-circle-right"></i></button>.
 <p></p>
 </div>
 </div>
