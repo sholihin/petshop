@@ -351,6 +351,23 @@ input {
     width: 300px;
     margin: 7px 0px;
 }
+textarea {
+    border-radius: 2px;
+    border: 0px;
+    background-color: whitesmoke;
+    color: #232122;
+    padding: 7px 12px;
+    width: 300px;
+    margin: 7px 0px;
+}
+select {
+    border-radius: 2px;
+    background-color: whitesmoke;
+    color: #232122;
+    padding: 7px 12px;
+    width: 300px;
+    margin: 7px 0px;
+}
 .slider {
     padding-bottom: 30em;
     display:block;

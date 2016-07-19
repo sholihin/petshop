@@ -201,6 +201,9 @@ session_start();
 							    case "konfirmasi":
 							        include "konfirmasi.php";
 							        break;
+							    case "konfirmasi-alamat":
+							        include "konfirmasi-alamat.php";
+							        break;
 							    case "kontak":
 							        include "contact.php";
 							        break;

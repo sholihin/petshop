@@ -53,7 +53,7 @@ if(count($_SESSION['cart']) > 0 ){
 ?>
 <tr>
 	<td style="border:none;text-align:right;" colspan="4">
-        <a href="checkout.php"><input type="button" class="btn-warning" value="PROSES" style="width: 112px;"/></a> 
+        <a href="index.php?page=konfirmasi-alamat"><input type="button" class="btn-warning" value="PROSES" style="width: 112px;"/></a> 
     </td>
 </tr>
 <?php } ?>

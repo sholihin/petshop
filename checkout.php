@@ -12,6 +12,7 @@ if(isset($_SESSION['login_member'])){
 							'".$date."')");
 	$idheader = null;
 	$idheader = $koneksi->insert_id;
+	$berat = 0;
 
 	for($x=0; $x < count($_SESSION['cart']); $x++) {
 		mysqli_query($koneksi, "INSERT INTO `cart` VALUES (NULL, 
@@ -23,6 +24,7 @@ if(isset($_SESSION['login_member'])){
 		'checkout'
 	  	)");
 
+		$berat += ($_SESSION['cart'][$x]['weight'] * $_SESSION['cart'][$x]['qty']);
 	  	mysqli_query($koneksi, "UPDATE `product` SET `stock_product` = `stock_product` - ".$_SESSION['cart'][$x]['qty']." WHERE `id_product` = '".$_SESSION['cart'][$x]['id_produk']."'");
 	}
 	$query = mysqli_query($koneksi, "SELECT max(id_invoice) from invoice");
@@ -33,23 +35,34 @@ if(isset($_SESSION['login_member'])){
 	   $kode = (int) $nilaikode;
 	   $kode = $kode + 1;
 	   $hasilkode = "INV".str_pad($kode, 3, "0", STR_PAD_LEFT);
-	   echo "hasil1".$hasilkode;
 	}else{
 	   $hasilkode = "INV001";
-	   echo "hasil2".$hasilkode;
 	}
 
+	$biaya_kirim = 0;
+	if($berat <= 1000){
+		$biaya_kirim = $_POST['ongkir'];
+	}elseif($berat <= 2000 and $berat > 1000){
+		$biaya_kirim = ($_POST['ongkir'] * 2);
+	}elseif($berat <= 3000 and $berat > 2000){
+		$biaya_kirim = ($_POST['ongkir'] * 3);
+	}elseif($berat <= 4000 and $berat > 3000){
+		$biaya_kirim = ($_POST['ongkir'] * 4);
+	}elseif($berat <= 5000 and $berat > 4000){
+		$biaya_kirim = ($_POST['ongkir'] * 5);
+	}
+
+	$totalharga = $_SESSION['total_tagihan'] + $biaya_kirim;
 	mysqli_query($koneksi, "INSERT INTO `invoice` VALUES (
 	'".$hasilkode."', 
 	'checkout', 
-	'".$_SESSION['total_tagihan']."', 
+	'".$totalharga."', 
 	'".$idheader."', 
 	'".$_SESSION['login_member']['id']."', 
 	'".$date."')
 	");
-
-	unset($_SESSION['cart']);
-	header('location:index.php?page=konfirmasi&inv='.$hasilkode.'');
+	// unset($_SESSION['cart']);
+	header('location:index.php?page=konfirmasi&inv='.$hasilkode.'&b='.$berat.'&bk='.$biaya_kirim);
 }else{
 	echo "<script>alert('Silahkan melakukan login terlebih dulu..!!');window.location.href='index.php';</script>";
 }
