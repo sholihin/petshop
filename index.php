@@ -72,8 +72,8 @@ session_start();
 							<nav style="border-radius: 4px;background-color: #03a9f4;height:40px">
 							     <!--cari-->
 							<div class="cari">
-							    <form>
-								    <input type="text" name="txtKeyword" placeholder="tekan ctrl+f" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Cari';}" style="margin: 4px 4px;">
+							    <form action="index.php?page=cari" method="post">
+								    <input type="text" name="keyword" placeholder="Pencarian Produk" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Cari';}" style="margin: 4px 4px;">
 							    </form>
 							</div>
 							     <!--end cari-->
@@ -218,6 +218,9 @@ session_start();
 							        break;
 							    case "review":
 							        include "review.php";
+							        break;
+							    case "cari":
+							        include "search-produk.php";
 							        break;
 						        default:
 						        	include "semua-produk.php";
