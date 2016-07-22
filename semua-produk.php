@@ -4,7 +4,7 @@
 <div class="gallery js-flickity">
 <?php 
 include "config/koneksi.php";
-$query=mysqli_query($koneksi, "SELECT * FROM `product` ORDER BY `id_product` DESC limit 10");
+$query=mysqli_query($koneksi, "SELECT * FROM `product` where status_product = 'public' ORDER BY `id_product` DESC limit 10");
 $numrow = mysqli_num_rows($query);
 if($numrow > 0){
 

@@ -19,7 +19,7 @@ $rowCategory = mysqli_fetch_array($qcategory);
 <br />
 
 	<?php 
-	$query=mysqli_query($koneksi, "SELECT * FROM `product` where id_category = '$category' ORDER BY `name_product` ASC");
+	$query=mysqli_query($koneksi, "SELECT * FROM `product` where id_category = '$category' AND `status_product` = 'public' ORDER BY `name_product` ASC");
 	$numrow = mysqli_num_rows($query);
 	if($numrow > 0){
 

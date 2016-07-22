@@ -16,7 +16,7 @@
                 $q = mysqli_query($koneksi, "SELECT * FROM `sub-category`");
                 while($r = mysqli_fetch_array($q)){
               ?>
-                <option value="<?php echo $r['id_category']; ?>">
+                <option value="<?php echo $r['id_sub']; ?>">
                   <?php 
                   $q1 = mysqli_query($koneksi, "SELECT * FROM `category` where id_category = '".$r['id_category']."'");
                   $r1 = mysqli_fetch_array($q1);
