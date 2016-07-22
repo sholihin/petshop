@@ -146,7 +146,6 @@ session_start();
 								<a><strong><i class="fa fa-user"></i> Akun Saya</strong></a>
 								<a href="index.php?page=akun-saya">&nbsp; <i class="fa fa-info-circle"></i> Rubah Profil</a>
 								<a href="index.php?page=history">&nbsp; <i class="fa fa-history"></i> Riwayat Transaksi</a>
-								<a href="index.php?page=konfirmasi">&nbsp; <i class="fa fa-sign-out"></i>Konfirmasi</a>
 							</section>
 						</aside>
 						<?php } ?>
