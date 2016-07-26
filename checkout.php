@@ -50,6 +50,16 @@ if(isset($_SESSION['login_member'])){
 		$biaya_kirim = ($_POST['ongkir'] * 4);
 	}elseif($berat <= 5000 and $berat > 4000){
 		$biaya_kirim = ($_POST['ongkir'] * 5);
+	}elseif($berat <= 6000 and $berat > 5000){
+		$biaya_kirim = ($_POST['ongkir'] * 6);
+	}elseif($berat <= 7000 and $berat > 6000){
+		$biaya_kirim = ($_POST['ongkir'] * 7);
+	}elseif($berat <= 8000 and $berat > 7000){
+		$biaya_kirim = ($_POST['ongkir'] * 8);
+	}elseif($berat <= 9000 and $berat > 8000){
+		$biaya_kirim = ($_POST['ongkir'] * 9);
+	}elseif($berat <= 10000 and $berat > 9000){
+		$biaya_kirim = ($_POST['ongkir'] * 10);
 	}
 
 	$totalharga = $_SESSION['total_tagihan'] + $biaya_kirim;
@@ -61,7 +71,7 @@ if(isset($_SESSION['login_member'])){
 	'".$_SESSION['login_member']['id']."', 
 	'".$date."')
 	");
-	// unset($_SESSION['cart']);
+	unset($_SESSION['cart']);
 	header('location:index.php?page=konfirmasi&inv='.$hasilkode.'&b='.$berat.'&bk='.$biaya_kirim);
 }else{
 	echo "<script>alert('Silahkan melakukan login terlebih dulu..!!');window.location.href='index.php';</script>";
